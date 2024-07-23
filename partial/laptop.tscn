@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://32lojrt5n25o"]
+
+[ext_resource type="Texture2D" uid="uid://nbutjilhvli8" path="res://images/laptop.png" id="1_0h5y5"]
+[ext_resource type="Script" path="res://scripts/laptop.gd" id="1_twjff"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_btxfq"]
+size = Vector2(24, 24)
+
+[node name="Laptop" type="Area2D" groups=["Laptop"]]
+collision_layer = 8
+collision_mask = 0
+monitoring = false
+script = ExtResource("1_twjff")
+
+[node name="Sprite" type="Sprite2D" parent="."]
+texture = ExtResource("1_0h5y5")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_btxfq")

@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://c22g7a6tj3o38"]
+
+[ext_resource type="Texture2D" uid="uid://prrqfwux5kpq" path="res://images/dead_ricket.png" id="1_e0gmm"]
+[ext_resource type="Script" path="res://scripts/corpse.gd" id="2_knpl3"]
+
+[node name="Corpse" type="Sprite2D"]
+z_index = 10
+texture = ExtResource("1_e0gmm")
+script = ExtResource("2_knpl3")
+
+[node name="CleanupTimer" type="Timer" parent="."]
+wait_time = 5.0
+autostart = true
+
+[connection signal="timeout" from="CleanupTimer" to="." method="queue_free"]
