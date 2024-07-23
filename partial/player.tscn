@@ -1,15 +1,20 @@
-[gd_scene load_steps=13 format=3 uid="uid://c3gitjraydm0r"]
+[gd_scene load_steps=15 format=3 uid="uid://c3gitjraydm0r"]
 
 [ext_resource type="Script" path="res://scripts/Player.gd" id="1_jv72v"]
-[ext_resource type="Texture2D" uid="uid://dxtk33c33hk21" path="res://images/Ricket.png" id="2_g4ux2"]
-[ext_resource type="Texture2D" uid="uid://bfgiqx55867fg" path="res://images/shotgun.png" id="3_sbsk2"]
+[ext_resource type="Texture2D" uid="uid://l0eggdjlsyla" path="res://images/ricket mockup.png" id="2_eigfv"]
+[ext_resource type="Script" path="res://scripts/Tail.gd" id="2_tm25d"]
+[ext_resource type="Texture2D" uid="uid://dtbllcvmbwu1o" path="res://images/shotgun big.png" id="3_nxpwl"]
 [ext_resource type="AudioStream" uid="uid://bkbhf5yg6ui60" path="res://sfx/shotgun_bounce.wav" id="4_1nctm"]
 [ext_resource type="AudioStream" uid="uid://nm1qoqkd0rwd" path="res://sfx/shotgun_reload.wav" id="5_rovxd"]
 [ext_resource type="AudioStream" uid="uid://dweewu5qj6mo1" path="res://sfx/shotgun_fire.wav" id="6_w7ggh"]
 [ext_resource type="Texture2D" uid="uid://bixo73xoquuhw" path="res://images/superbounce.png" id="7_xcnh2"]
 
+[sub_resource type="Curve" id="Curve_i3w8k"]
+_data = [Vector2(0, 0.384615), 0.0, 0.0, 0, 0, Vector2(0.565041, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), -2.52889, 0.0, 0, 0]
+point_count = 3
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_m8tgq"]
-size = Vector2(20, 32)
+size = Vector2(41, 74)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ewseq"]
 size = Vector2(22, 34)
@@ -36,23 +41,29 @@ stream_0/weight = 1.0
 position = Vector2(320, 180)
 collision_layer = 2
 script = ExtResource("1_jv72v")
-acceleration = 2000.0
-jump_height = 50.0
+move_speed = 300.0
+acceleration = 3000.0
+jump_height = 100.0
 jump_time = 0.25
 gun_horizontal_launch_vertical_boost_speed = 250.0
 bullet_speed = 400.0
 bullet_spread = 5.0
 
+[node name="Tail" type="Line2D" parent="."]
+position = Vector2(0, 12)
+points = PackedVector2Array(0, 0, -13, 2, -25, 6, -37, 6, -49, 3, -60, 0)
+width = 16.0
+width_curve = SubResource("Curve_i3w8k")
+script = ExtResource("2_tm25d")
+
 [node name="Appearance" type="Node2D" parent="."]
 
 [node name="RicketSprite" type="Sprite2D" parent="Appearance"]
-texture = ExtResource("2_g4ux2")
+texture = ExtResource("2_eigfv")
 
 [node name="ShotgunSprite" type="Sprite2D" parent="Appearance"]
-position = Vector2(0, 3)
-texture = ExtResource("3_sbsk2")
-offset = Vector2(7, -3)
-hframes = 2
+position = Vector2(12, 6)
+texture = ExtResource("3_nxpwl")
 
 [node name="Superbounce" type="Sprite2D" parent="Appearance/ShotgunSprite"]
 visible = false
@@ -60,10 +71,11 @@ position = Vector2(28, -5)
 texture = ExtResource("7_xcnh2")
 
 [node name="BounceRaycast" type="RayCast2D" parent="."]
-target_position = Vector2(0, 33)
+target_position = Vector2(0, 48)
 collision_mask = 8
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(4.5, 3)
 shape = SubResource("RectangleShape2D_m8tgq")
 
 [node name="ReloadTimer" type="Timer" parent="."]

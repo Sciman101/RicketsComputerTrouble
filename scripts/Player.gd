@@ -1,6 +1,5 @@
 extends CharacterBody2D
 
-const SHOTGUN_REST_POS = Vector2(0,3)
 const MAX_AMMO := 3
 const MAX_DEFAULT_AMMO := 1
 
@@ -37,6 +36,8 @@ const MAX_DEFAULT_AMMO := 1
 @onready var sfx_bounce = $SFX/Bounce
 @onready var sfx_reload = $SFX/Reload
 @onready var sfx_fire = $SFX/Fire
+
+@onready var SHOTGUN_REST_POS = shotgun_sprite.position
 
 var gravity : float
 var jump_velocity : float
