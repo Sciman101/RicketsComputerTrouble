@@ -2,6 +2,7 @@ extends CharacterBody2D
 
 const MAX_AMMO := 3
 const MAX_DEFAULT_AMMO := 1
+const TAIL_OFFSETS := [12,14,16,14]
 
 # -- other scenes --
 @onready var Bullet = preload("res://partial/bullet.tscn")
@@ -27,8 +28,10 @@ const MAX_DEFAULT_AMMO := 1
 
 # -- nodes --
 @onready var appearance = $Appearance
+@onready var sprite = $Appearance/RicketSprite
 @onready var shotgun_sprite = $Appearance/ShotgunSprite
 @onready var superbounce_graphic = $Appearance/ShotgunSprite/Superbounce
+@onready var tail = $Tail
 
 @onready var reload_timer = $ReloadTimer
 @onready var bounce_raycast = $BounceRaycast
@@ -109,8 +112,12 @@ func _handle_movement(delta : float):
 			if not aiming_down:
 				shotgun_sprite.rotation_degrees = 10
 		appearance.scale.x = facing
+		sprite.play("run")
+		tail.position.y = TAIL_OFFSETS[sprite.frame]
 	elif is_on_floor():
 		velocity.x = move_toward(velocity.x, 0, delta * acceleration)
+		sprite.play("default")
+		tail.position.y = 12
 	
 	if ignore_horizontal_input_buffer > 0:
 		ignore_horizontal_input_buffer -= delta
