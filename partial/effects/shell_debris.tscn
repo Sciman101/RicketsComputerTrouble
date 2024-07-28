@@ -1,26 +1,13 @@
-[gd_scene load_steps=9 format=3 uid="uid://d4nouxomvsw38"]
+[gd_scene load_steps=5 format=3 uid="uid://d4nouxomvsw38"]
 
 [ext_resource type="Script" path="res://scripts/shell_debris.gd" id="1_mcbw8"]
 [ext_resource type="Texture2D" uid="uid://dxiwjvkroh0ga" path="res://images/shell_debris.png" id="1_nme6h"]
-[ext_resource type="AudioStream" uid="uid://cl7qsqgwrashu" path="res://sfx/shell_fall-01.wav" id="3_vtrmp"]
-[ext_resource type="AudioStream" uid="uid://dugt7b2x4yoym" path="res://sfx/shell_fall-02.wav" id="4_jqghd"]
-[ext_resource type="AudioStream" uid="uid://cafj8k6le5psk" path="res://sfx/shell_fall-03.wav" id="5_ojw2q"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_atgi2"]
 bounce = 0.4
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2h7sg"]
 size = Vector2(10, 4)
-
-[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_dcmy0"]
-random_pitch = 1.1
-streams_count = 3
-stream_0/stream = ExtResource("3_vtrmp")
-stream_0/weight = 1.0
-stream_1/stream = ExtResource("4_jqghd")
-stream_1/weight = 1.0
-stream_2/stream = ExtResource("5_ojw2q")
-stream_2/weight = 1.0
 
 [node name="ShellDebris" type="RigidBody2D"]
 collision_layer = 16
@@ -36,8 +23,5 @@ texture = ExtResource("1_nme6h")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_2h7sg")
-
-[node name="SfxFall" type="AudioStreamPlayer" parent="."]
-stream = SubResource("AudioStreamRandomizer_dcmy0")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

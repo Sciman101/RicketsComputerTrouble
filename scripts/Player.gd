@@ -6,8 +6,8 @@ const TAIL_OFFSETS := [12,14,16,14]
 
 # -- other scenes --
 @onready var Bullet = preload("res://partial/bullet.tscn")
-@onready var Corpse = preload("res://partial/corpse.tscn")
-@onready var ShellDebris = preload("res://partial/shell_debris.tscn")
+@onready var Corpse = preload("res://partial/effects/corpse.tscn")
+@onready var ShellDebris = preload("res://partial/effects/shell_debris.tscn")
 
 # -- properties --
 @export_category("Movement")
@@ -36,10 +36,6 @@ const TAIL_OFFSETS := [12,14,16,14]
 
 @onready var reload_timer = $ReloadTimer
 @onready var bounce_raycast = $BounceRaycast
-
-@onready var sfx_bounce = $SFX/Bounce
-@onready var sfx_reload = $SFX/Reload
-@onready var sfx_fire = $SFX/Fire
 
 @onready var SHOTGUN_REST_POS = shotgun_sprite.position
 
@@ -99,7 +95,7 @@ func _handle_movement(delta : float):
 				superbounce_timer = 0.05
 				shotgun_sprite.position += Vector2.UP * 4
 				did_bounce = true
-				sfx_bounce.play()
+				SoundManager.play('shotgun-bounce')
 			else:
 				aiming_down = false
 	
@@ -176,7 +172,7 @@ func get_shell():
 func reload_shotgun():
 	if not can_shoot():
 		ammo = MAX_DEFAULT_AMMO
-		sfx_reload.play()
+		SoundManager.play('shotgun-reload')
 		if aiming_down:
 			shotgun_sprite.position += Vector2(0, 2)
 		else:
@@ -202,7 +198,7 @@ func shoot():
 		bullet.rotation = -dir.angle_to(Vector2.RIGHT)
 		bullet.motion = dir * bullet_speed
 	
-	sfx_fire.play()
+	SoundManager.play('shotgun-fire')
 	# Apply velocity
 	if not is_on_floor():
 		if aiming_down:

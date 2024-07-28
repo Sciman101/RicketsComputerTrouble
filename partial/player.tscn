@@ -1,13 +1,10 @@
-[gd_scene load_steps=24 format=3 uid="uid://c3gitjraydm0r"]
+[gd_scene load_steps=18 format=3 uid="uid://c3gitjraydm0r"]
 
 [ext_resource type="Script" path="res://scripts/Player.gd" id="1_jv72v"]
 [ext_resource type="Texture2D" uid="uid://cmlclxwc6s1i4" path="res://images/tail.png" id="2_c0pe5"]
 [ext_resource type="Script" path="res://scripts/Tail.gd" id="2_tm25d"]
 [ext_resource type="Texture2D" uid="uid://dxtk33c33hk21" path="res://images/Ricket.png" id="3_2d01p"]
 [ext_resource type="Texture2D" uid="uid://dtbllcvmbwu1o" path="res://images/shotgun big.png" id="3_nxpwl"]
-[ext_resource type="AudioStream" uid="uid://bkbhf5yg6ui60" path="res://sfx/shotgun_bounce.wav" id="4_1nctm"]
-[ext_resource type="AudioStream" uid="uid://nm1qoqkd0rwd" path="res://sfx/shotgun_reload.wav" id="5_rovxd"]
-[ext_resource type="AudioStream" uid="uid://dweewu5qj6mo1" path="res://sfx/shotgun_fire.wav" id="6_w7ggh"]
 [ext_resource type="Texture2D" uid="uid://bixo73xoquuhw" path="res://images/superbounce.png" id="7_xcnh2"]
 
 [sub_resource type="Curve" id="Curve_i3w8k"]
@@ -87,24 +84,6 @@ size = Vector2(41, 74)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ewseq"]
 size = Vector2(22, 34)
 
-[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_lkvja"]
-random_pitch = 1.5
-streams_count = 1
-stream_0/stream = ExtResource("4_1nctm")
-stream_0/weight = 1.0
-
-[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_htf5a"]
-random_pitch = 1.2
-streams_count = 1
-stream_0/stream = ExtResource("5_rovxd")
-stream_0/weight = 1.0
-
-[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_bbl8i"]
-random_pitch = 1.2
-streams_count = 1
-stream_0/stream = ExtResource("6_w7ggh")
-stream_0/weight = 1.0
-
 [node name="Player" type="CharacterBody2D" groups=["Player"]]
 position = Vector2(320, 180)
 collision_layer = 2
@@ -165,17 +144,6 @@ collision_mask = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HazardDetector"]
 shape = SubResource("RectangleShape2D_ewseq")
-
-[node name="SFX" type="Node" parent="."]
-
-[node name="Bounce" type="AudioStreamPlayer2D" parent="SFX"]
-stream = SubResource("AudioStreamRandomizer_lkvja")
-
-[node name="Reload" type="AudioStreamPlayer2D" parent="SFX"]
-stream = SubResource("AudioStreamRandomizer_htf5a")
-
-[node name="Fire" type="AudioStreamPlayer2D" parent="SFX"]
-stream = SubResource("AudioStreamRandomizer_bbl8i")
 
 [connection signal="timeout" from="ReloadTimer" to="." method="reload_shotgun"]
 [connection signal="body_entered" from="HazardDetector" to="." method="_on_hazard_detector_body_entered"]

@@ -23,6 +23,7 @@ RoomManager="*res://partial/room_manager.tscn"
 BetterTerrain="*res://addons/better-terrain/BetterTerrain.gd"
 Player="*res://partial/player.tscn"
 Stats="*res://scripts/singleton/Stats.gd"
+SoundManager="*res://scripts/singleton/sound_manager.gd"
 
 [display]
 
@@ -32,6 +33,7 @@ window/size/resizable=false
 window/size/window_width_override=1280
 window/size/window_height_override=720
 window/stretch/mode="viewport"
+window/vsync/vsync_mode=0
 
 [editor_plugins]
 
