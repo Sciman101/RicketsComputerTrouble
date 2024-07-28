@@ -5,6 +5,7 @@
 
 [node name="Corpse" type="Sprite2D"]
 z_index = 10
+scale = Vector2(2, 2)
 texture = ExtResource("1_e0gmm")
 script = ExtResource("2_knpl3")
 

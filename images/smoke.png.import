@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c07fg63mo3ill"
-path="res://.godot/imported/tile.png-f722072dde216ff7d5d03365a1f88134.ctex"
+uid="uid://cn8dqu4pxkv1l"
+path="res://.godot/imported/smoke.png-ca6a3de3eaa7df4f80e3bb05c1e0929d.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://images/tile.png"
-dest_files=["res://.godot/imported/tile.png-f722072dde216ff7d5d03365a1f88134.ctex"]
+source_file="res://images/smoke.png"
+dest_files=["res://.godot/imported/smoke.png-ca6a3de3eaa7df4f80e3bb05c1e0929d.ctex"]
 
 [params]
 

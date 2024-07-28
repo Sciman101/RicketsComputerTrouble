@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://shiwvcta5afx"
-path="res://.godot/imported/checkpoint.png-a75f53ecd647acff0a711ebd6126f2fe.ctex"
+uid="uid://dxiwjvkroh0ga"
+path="res://.godot/imported/shell_debris.png-44f42cd1c9eddddf1427f4d8aeb7903a.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://images/checkpoint.png"
-dest_files=["res://.godot/imported/checkpoint.png-a75f53ecd647acff0a711ebd6126f2fe.ctex"]
+source_file="res://images/shell_debris.png"
+dest_files=["res://.godot/imported/shell_debris.png-44f42cd1c9eddddf1427f4d8aeb7903a.ctex"]
 
 [params]
 

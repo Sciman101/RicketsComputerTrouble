@@ -5,7 +5,7 @@
 
 [sub_resource type="Curve2D" id="Curve2D_xt54s"]
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, 83, 60, 0, 0, 0, 0, 550, 60, 0, 0, 0, 0, 550, 180, 0, 0, 0, 0, 280, 180, 0, 0, 0, 0, 280, 280, 0, 0, 0, 0, 560, 280)
+"points": PackedVector2Array(0, 0, 0, 0, 166, 120, 0, 0, 0, 0, 1100, 120, 0, 0, 0, 0, 1100, 360, 0, 0, 0, 0, 560, 360, 0, 0, 0, 0, 560, 560, 0, 0, 0, 0, 1120, 560)
 }
 point_count = 6
 
@@ -18,10 +18,10 @@ layer_0/tile_data = PackedInt32Array(-1, 327680, 1, -65536, 65536, 2, -65535, 65
 curve = SubResource("Curve2D_xt54s")
 
 [node name="Start" parent="." index="3" instance=ExtResource("2_syba0")]
-position = Vector2(32, 112)
+position = Vector2(64, 224)
 default_spawn = true
 
 [node name="Exit" parent="." index="4" instance=ExtResource("2_syba0")]
-position = Vector2(608, 304)
+position = Vector2(1216, 608)
 linked_door_name = "Entrance"
 scene_to_load = "res://rooms/gap_bounce.tscn"

@@ -7,6 +7,7 @@ const TAIL_OFFSETS := [12,14,16,14]
 # -- other scenes --
 @onready var Bullet = preload("res://partial/bullet.tscn")
 @onready var Corpse = preload("res://partial/corpse.tscn")
+@onready var ShellDebris = preload("res://partial/shell_debris.tscn")
 
 # -- properties --
 @export_category("Movement")
@@ -90,17 +91,22 @@ func _handle_movement(delta : float):
 	# Handle bounce
 	var did_bounce : bool = false
 	if aiming_down and bounce_raycast.is_colliding() and velocity.y > 0:
-		velocity.y = max(-velocity.y, -jump_velocity)
-		if velocity.y < -100:
-			superbounce_timer = 0.05
-			shotgun_sprite.position += Vector2.UP * 4
-			did_bounce = true
-			sfx_bounce.play()
-		else:
+		if velocity.y < 60:
 			aiming_down = false
+		else:
+			velocity.y = max(-velocity.y, -jump_velocity)
+			if velocity.y < -100:
+				superbounce_timer = 0.05
+				shotgun_sprite.position += Vector2.UP * 4
+				did_bounce = true
+				sfx_bounce.play()
+			else:
+				aiming_down = false
 	
 	# Add the gravity.
 	if not is_on_floor() and not did_bounce:
+		if not reload_timer.is_stopped():
+			reload_timer.stop()
 		velocity.y += gravity * delta
 		
 	# Get the input direction and handle the movement/deceleration.
@@ -172,6 +178,11 @@ func reload_shotgun():
 			shotgun_sprite.position += Vector2(0, 2)
 		else:
 			shotgun_sprite.position += Vector2(-2, 0)
+			
+		# Make shell
+		var shell_debris = Utils.spawn(ShellDebris, global_position, get_parent())
+		shell_debris.apply_force(Vector2(-facing * 300, randf_range(-300,-200)))
+		shell_debris.apply_torque(100)
 	Ui.ammo_counter.set_amount(ammo)
 
 func shoot():
@@ -202,22 +213,18 @@ func shoot():
 	
 	bullet_direction.x = abs(bullet_direction.x)
 	shotgun_sprite.position -= bullet_direction * 8
-	shotgun_sprite.frame = 1
 	
 	ammo -= 1
 	Ui.ammo_counter.set_amount(ammo)
 	
 	Utils.camera.kick(bullet_direction * -4)
-	
-	await get_tree().create_timer(0.1).timeout
-	shotgun_sprite.frame = 0
 
 func die():
 	disable()
 	
 	# Create corpse
 	var corpse = Utils.spawn(Corpse, position, get_parent())
-	corpse.velocity = Vector2(randf_range(-100,100),randf_range(-500,-200))
+	corpse.velocity = Vector2(randf_range(-100,100),randf_range(-500,-200)) + Vector2.RIGHT * velocity.x
 	corpse.angular_velocity = randf_range(-2,2)
 	corpse.gravity = gravity
 	

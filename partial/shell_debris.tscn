@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://d4nouxomvsw38"]
+
+[ext_resource type="Texture2D" uid="uid://dxiwjvkroh0ga" path="res://images/shell_debris.png" id="1_nme6h"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2h7sg"]
+size = Vector2(10, 4)
+
+[node name="ShellDebris" type="RigidBody2D"]
+collision_layer = 16
+collision_mask = 17
+mass = 0.03
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_nme6h")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_2h7sg")

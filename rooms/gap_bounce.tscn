@@ -6,7 +6,7 @@
 
 [sub_resource type="Curve2D" id="Curve2D_cb6ij"]
 _data = {
-"points": PackedVector2Array(-177.783, 36.5165, 0, 0, 320, 180, 0, 0, 0, 0, 900, 180)
+"points": PackedVector2Array(-177.783, 36.5165, 0, 0, 640, 360, 0, 0, 0, 0, 1800, 360)
 }
 point_count = 2
 
@@ -19,21 +19,21 @@ layer_0/tile_data = PackedInt32Array(40, 65536, 0, 65576, 65536, 1, 131112, 6553
 curve = SubResource("Curve2D_cb6ij")
 
 [node name="Entrance" parent="." index="3" instance=ExtResource("2_iobns")]
-position = Vector2(67, 192)
+position = Vector2(134, 384)
 default_spawn = true
 
 [node name="Exit1" parent="." index="4" instance=ExtResource("2_iobns")]
-position = Vector2(552, 192)
+position = Vector2(1104, 384)
 linked_door_name = "Entrance"
 scene_to_load = "res://rooms/tall_room.tscn"
 
 [node name="Exit2" parent="." index="5" instance=ExtResource("2_iobns")]
-position = Vector2(1134, 192)
+position = Vector2(2268, 384)
 linked_door_name = "Entrance"
 scene_to_load = "res://rooms/double_shot_room.tscn"
 
 [node name="Laptop" parent="." index="6" instance=ExtResource("3_oegde")]
-position = Vector2(448, 254)
+position = Vector2(896, 508)
 
 [node name="Laptop2" parent="." index="7" instance=ExtResource("3_oegde")]
-position = Vector2(598, 126)
+position = Vector2(1196, 252)

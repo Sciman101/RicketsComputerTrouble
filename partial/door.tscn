@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://bbixn5fc8ob6m" path="res://images/door.png" id="2_h0dmj"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_yh75i"]
-size = Vector2(30, 47)
+size = Vector2(60, 94)
 
 [node name="Door" type="Area2D" groups=["Door"]]
 z_index = -10
@@ -14,11 +14,11 @@ monitorable = false
 script = ExtResource("1_4fm5h")
 
 [node name="Door" type="Sprite2D" parent="."]
-position = Vector2(0, -24)
+position = Vector2(0, -48)
 texture = ExtResource("2_h0dmj")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, -23.5)
+position = Vector2(0, -47)
 shape = SubResource("RectangleShape2D_yh75i")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
