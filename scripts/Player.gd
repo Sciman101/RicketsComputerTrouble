@@ -183,7 +183,7 @@ func reload_shotgun():
 			shotgun_sprite.position += Vector2(-2, 0)
 			
 		# Make shell
-		var shell_debris = Utils.spawn(ShellDebris, global_position, get_parent())
+		var shell_debris = Utils.spawn(ShellDebris, global_position, RoomManager.current_scene)
 		shell_debris.apply_force(Vector2(-facing * 300, randf_range(-300,-200)))
 		shell_debris.apply_torque(100)
 	Ui.ammo_counter.set_amount(ammo)

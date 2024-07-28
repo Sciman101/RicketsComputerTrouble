@@ -22,5 +22,8 @@ position_smoothing_enabled = true
 script = ExtResource("2_253wr")
 path = NodePath("../Path2D")
 
+[node name="AudioListener2D" type="AudioListener2D" parent="Camera2D"]
+current = true
+
 [node name="Path2D" type="Path2D" parent="."]
 curve = SubResource("Curve2D_nam17")
