@@ -125,6 +125,9 @@ func _handle_movement(delta : float):
 		sprite.play("default")
 		tail.position.y = 12
 	
+	if not is_on_floor():
+		sprite.play("air")
+	
 	if ignore_horizontal_input_buffer > 0:
 		ignore_horizontal_input_buffer -= delta
 	if superbounce_timer > 0:

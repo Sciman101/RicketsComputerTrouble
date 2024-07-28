@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://c3gitjraydm0r"]
+[gd_scene load_steps=24 format=3 uid="uid://c3gitjraydm0r"]
 
 [ext_resource type="Script" path="res://scripts/Player.gd" id="1_jv72v"]
 [ext_resource type="Texture2D" uid="uid://cmlclxwc6s1i4" path="res://images/tail.png" id="2_c0pe5"]
@@ -13,6 +13,10 @@
 [sub_resource type="Curve" id="Curve_i3w8k"]
 _data = [Vector2(0, 0.384615), 0.0, 0.0, 0, 0, Vector2(0.565041, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), -2.52889, 0.0, 0, 0]
 point_count = 3
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tao8a"]
+atlas = ExtResource("3_2d01p")
+region = Rect2(384, 0, 64, 80)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ja4yv"]
 atlas = ExtResource("3_2d01p")
@@ -40,6 +44,14 @@ region = Rect2(320, 0, 64, 80)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_qbg1k"]
 animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tao8a")
+}],
+"loop": true,
+"name": &"air",
+"speed": 5.0
+}, {
 "frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_ja4yv")
@@ -120,7 +132,7 @@ script = ExtResource("2_tm25d")
 
 [node name="RicketSprite" type="AnimatedSprite2D" parent="Appearance"]
 sprite_frames = SubResource("SpriteFrames_qbg1k")
-animation = &"run"
+animation = &"air"
 autoplay = "default"
 
 [node name="ShotgunSprite" type="Sprite2D" parent="Appearance"]
