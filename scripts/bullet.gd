@@ -12,6 +12,9 @@ func _physics_process(delta):
 		queue_free()
 
 func _on_body_entered(body):
+	if body.is_in_group("TargetBlock"):
+		# Disable target blocks
+		body.queue_free()
 	queue_free()
 
 func _on_area_entered(area):

@@ -1,6 +1,7 @@
-[gd_resource type="TileSet" load_steps=5 format=3 uid="uid://8xbeyp38fce1"]
+[gd_resource type="TileSet" load_steps=6 format=3 uid="uid://8xbeyp38fce1"]
 
 [ext_resource type="Texture2D" uid="uid://dfjkemvu1vmcs" path="res://images/default_tiles.png" id="1_pv2a7"]
+[ext_resource type="PackedScene" uid="uid://cjgiwa6nbii8s" path="res://partial/target_block.tscn" id="2_sthu0"]
 [ext_resource type="PackedScene" uid="uid://comiv7xfvwtyv" path="res://partial/shell_pickup.tscn" id="3_8ja0c"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_cv5ax"]
@@ -736,6 +737,10 @@ texture_region_size = Vector2i(32, 32)
 0:4/0/physics_layer_1/angular_velocity = 0.0
 0:4/0/physics_layer_2/linear_velocity = Vector2(0, 0)
 0:4/0/physics_layer_2/angular_velocity = 0.0
+0:4/0/metadata/_better_terrain = {
+0: [1],
+"type": 1
+}
 1:4/0 = 0
 1:4/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 1:4/0/physics_layer_0/angular_velocity = 0.0
@@ -745,6 +750,11 @@ texture_region_size = Vector2i(32, 32)
 1:4/0/physics_layer_1/angular_velocity = 0.0
 1:4/0/physics_layer_2/linear_velocity = Vector2(0, 0)
 1:4/0/physics_layer_2/angular_velocity = 0.0
+1:4/0/metadata/_better_terrain = {
+0: [1],
+8: [1],
+"type": 1
+}
 2:4/0 = 0
 2:4/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 2:4/0/physics_layer_0/angular_velocity = 0.0
@@ -754,9 +764,14 @@ texture_region_size = Vector2i(32, 32)
 2:4/0/physics_layer_1/angular_velocity = 0.0
 2:4/0/physics_layer_2/linear_velocity = Vector2(0, 0)
 2:4/0/physics_layer_2/angular_velocity = 0.0
+2:4/0/metadata/_better_terrain = {
+8: [1],
+"type": 1
+}
 
 [sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_8uclh"]
 resource_name = "Room Assets"
+scenes/1/scene = ExtResource("2_sthu0")
 scenes/2/scene = ExtResource("3_8ja0c")
 
 [resource]
