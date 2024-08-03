@@ -20,7 +20,7 @@ func _get_available_player():
 			return child
 	return null
 
-func play(id:String, pitch: float = 1, volume_linear: float = 1, pitch_random : float = 0, volume_linear_random : float = 0):
+func play(id:String, pitch: float = 1, volume_linear: float = 1, pitch_random : float = 0, volume_linear_random : float = 0, bus:String="SFX"):
 	var sample = Samples.get(id)
 	if sample == null:
 		push_error("Trying to play unknown sample ", id)
@@ -32,6 +32,7 @@ func play(id:String, pitch: float = 1, volume_linear: float = 1, pitch_random : 
 		push_warning("No available AudioStreamPlayers to play ", id)
 		return
 	player.stream = sample
+	player.bus = bus
 	player.pitch_scale = pitch + randf_range(-pitch_random, pitch_random)
 	player.volume_db = linear_to_db(volume_linear + randf_range(-volume_linear_random, volume_linear_random))
 	player.play()

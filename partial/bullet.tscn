@@ -1,10 +1,57 @@
-[gd_scene load_steps=5 format=3 uid="uid://b45ygwillqb4w"]
+[gd_scene load_steps=11 format=3 uid="uid://b45ygwillqb4w"]
 
 [ext_resource type="Script" path="res://scripts/bullet.gd" id="1_u4muu"]
-[ext_resource type="Texture2D" uid="uid://c54ujq8afoywi" path="res://images/bullet.png" id="2_h22e4"]
+[ext_resource type="Texture2D" uid="uid://cwu2siiobeo0q" path="res://images/bullet-sheet.png" id="2_uijbs"]
 
-[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_ern3g"]
-blend_mode = 1
+[sub_resource type="AtlasTexture" id="AtlasTexture_njw80"]
+atlas = ExtResource("2_uijbs")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pjwvg"]
+atlas = ExtResource("2_uijbs")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sdbev"]
+atlas = ExtResource("2_uijbs")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1c0d6"]
+atlas = ExtResource("2_uijbs")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fsq5i"]
+atlas = ExtResource("2_uijbs")
+region = Rect2(128, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_807g4"]
+atlas = ExtResource("2_uijbs")
+region = Rect2(160, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_k8hfd"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_njw80")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pjwvg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sdbev")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1c0d6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fsq5i")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_807g4")
+}],
+"loop": false,
+"name": &"default",
+"speed": 15.0
+}]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ss20e"]
 radius = 6.0
@@ -14,12 +61,12 @@ collision_layer = 0
 collision_mask = 33
 script = ExtResource("1_u4muu")
 
-[node name="Bullet" type="Sprite2D" parent="."]
-material = SubResource("CanvasItemMaterial_ern3g")
-texture = ExtResource("2_h22e4")
+[node name="BulletSprite" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_k8hfd")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_ss20e")
 
 [connection signal="area_entered" from="." to="." method="_on_area_entered"]
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="animation_finished" from="BulletSprite" to="." method="_on_bullet_sprite_animation_finished"]

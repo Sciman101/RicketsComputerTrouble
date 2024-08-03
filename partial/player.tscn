@@ -95,8 +95,8 @@ jump_time = 0.25
 gun_horizontal_launch_speed = 1000.0
 gun_horizontal_launch_vertical_boost_speed = 500.0
 gun_vertical_launch_speed = 800.0
-bullet_speed = 800.0
-bullet_spread = 5.0
+bullet_speed = 600.0
+bullet_spread = 7.0
 
 [node name="Tail" type="Line2D" parent="."]
 position = Vector2(0, 12)

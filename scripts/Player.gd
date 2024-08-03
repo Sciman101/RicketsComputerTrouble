@@ -196,7 +196,7 @@ func shoot():
 		bullet.global_position = global_position + bullet_direction * 32
 		var dir = bullet_direction.rotated(deg_to_rad(i * bullet_spread))
 		bullet.rotation = -dir.angle_to(Vector2.RIGHT)
-		bullet.motion = dir * bullet_speed
+		bullet.motion = dir * bullet_speed * randf_range(0.95,1.05)
 	
 	SoundManager.play('shotgun-fire')
 	# Apply velocity
