@@ -1,0 +1,21 @@
+[gd_scene load_steps=5 format=3 uid="uid://celmu7u25a8h7"]
+
+[ext_resource type="PackedScene" uid="uid://d4nouxomvsw38" path="res://partial/effects/shell_debris.tscn" id="1_ginex"]
+[ext_resource type="Texture2D" uid="uid://cuguexedcucyu" path="res://images/laptop_debris.png" id="2_qvcf2"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_nupwx"]
+bounce = 0.2
+
+[sub_resource type="ConvexPolygonShape2D" id="ConvexPolygonShape2D_ihmwm"]
+points = PackedVector2Array(-20, -13, 7, -13, 7, -5, -3, 6, -20, 6)
+
+[node name="LaptopDebris" instance=ExtResource("1_ginex")]
+collision_mask = 1
+physics_material_override = SubResource("PhysicsMaterial_nupwx")
+
+[node name="Sprite2D" parent="." index="0"]
+texture = ExtResource("2_qvcf2")
+hframes = 3
+
+[node name="CollisionShape2D" parent="." index="1"]
+shape = SubResource("ConvexPolygonShape2D_ihmwm")

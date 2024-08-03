@@ -1,5 +1,8 @@
 extends Area2D
 
+@onready var DebrisArray = [preload("res://partial/effects/laptop_debris_1.tscn"),preload("res://partial/effects/laptop_debris_2.tscn"),preload("res://partial/effects/laptop_debris_3.tscn")]
+@onready var Explosion = preload("res://partial/effects/explosion.tscn")
+
 var active : bool = true
 
 func _ready():
@@ -10,7 +13,18 @@ func _ready():
 		modulate = Color(0,0,0,0.5)
 
 func on_shot():
-	Utils.camera.add_screenshake()
-	Stats.laptops += 1 
-	RoomManager.laptops[get_path()] = false
-	queue_free()
+	if active:
+		active = false
+		Utils.camera.add_screenshake()
+		Stats.laptops += 1 
+		RoomManager.laptops[get_path()] = false
+		
+		# Make debris
+		for i in 3:
+			var force = Vector2(randf_range(-1,1),randf_range(-1,1)).normalized() * randf_range(500,1000)
+			var debris = Utils.spawn(DebrisArray[i], global_position, RoomManager.current_scene)
+			debris.apply_force(force)
+			debris.apply_torque(randf_range(-100,100))
+		Utils.spawn(Explosion, global_position, RoomManager.current_scene)
+		
+		queue_free()

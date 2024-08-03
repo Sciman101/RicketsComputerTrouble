@@ -9,7 +9,7 @@ bounce = 0.4
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2h7sg"]
 size = Vector2(10, 4)
 
-[node name="ShellDebris" type="RigidBody2D"]
+[node name="ShellDebris" type="RigidBody2D" groups=["Debris"]]
 collision_layer = 16
 collision_mask = 17
 mass = 0.03

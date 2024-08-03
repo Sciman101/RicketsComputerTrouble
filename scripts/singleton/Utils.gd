@@ -12,7 +12,7 @@ func spawn(scene:PackedScene, at:Vector2, parent=null):
 	var inst = scene.instantiate()
 	inst.position = at
 	if not parent:
-		get_tree().root.add_child(inst)
+		get_tree().root.call_deferred('add_child', inst)
 	else:
-		parent.add_child(inst)
+		parent.call_deferred('add_child', inst)
 	return inst

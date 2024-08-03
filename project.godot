@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="RicketsComputerTrouble"
-run/main_scene="res://rooms/template_room.tscn"
+run/main_scene="res://rooms/beginner_room.tscn"
 config/features=PackedStringArray("4.2", "GL Compatibility")
 config/icon="res://icon.svg"
 

@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://bi3jdoaypknep"]
+[gd_scene load_steps=5 format=3 uid="uid://bi3jdoaypknep"]
 
 [ext_resource type="PackedScene" uid="uid://c8kekywtbsxfv" path="res://rooms/template_room.tscn" id="1_3r0fw"]
 [ext_resource type="PackedScene" uid="uid://d2gaj3ryohl5r" path="res://partial/door.tscn" id="2_syba0"]
+[ext_resource type="PackedScene" uid="uid://32lojrt5n25o" path="res://partial/laptop.tscn" id="3_nja84"]
 
 [sub_resource type="Curve2D" id="Curve2D_xt54s"]
 _data = {
@@ -25,3 +26,15 @@ default_spawn = true
 position = Vector2(1216, 608)
 linked_door_name = "Entrance"
 scene_to_load = "res://rooms/gap_bounce.tscn"
+
+[node name="Laptop" parent="." index="5" instance=ExtResource("3_nja84")]
+position = Vector2(564, 360)
+
+[node name="Laptop2" parent="." index="6" instance=ExtResource("3_nja84")]
+position = Vector2(763, 562)
+
+[node name="Laptop3" parent="." index="7" instance=ExtResource("3_nja84")]
+position = Vector2(883, 527)
+
+[node name="Laptop4" parent="." index="8" instance=ExtResource("3_nja84")]
+position = Vector2(1001, 563)

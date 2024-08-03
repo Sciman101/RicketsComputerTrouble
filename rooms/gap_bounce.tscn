@@ -35,5 +35,8 @@ scene_to_load = "res://rooms/double_shot_room.tscn"
 [node name="Laptop" parent="." index="6" instance=ExtResource("3_oegde")]
 position = Vector2(896, 508)
 
-[node name="Laptop2" parent="." index="7" instance=ExtResource("3_oegde")]
+[node name="Laptop3" parent="." index="7" instance=ExtResource("3_oegde")]
+position = Vector2(258, 334)
+
+[node name="Laptop2" parent="." index="8" instance=ExtResource("3_oegde")]
 position = Vector2(1196, 252)

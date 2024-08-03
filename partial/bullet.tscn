@@ -54,11 +54,11 @@ animations = [{
 }]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ss20e"]
-radius = 6.0
+radius = 12.0
 
 [node name="Bullet" type="Area2D"]
 collision_layer = 0
-collision_mask = 33
+collision_mask = 49
 script = ExtResource("1_u4muu")
 
 [node name="BulletSprite" type="AnimatedSprite2D" parent="."]

@@ -14,10 +14,11 @@ func _physics_process(delta):
 		queue_free()
 
 func _on_body_entered(body):
-	if body.is_in_group("TargetBlock"):
-		# Disable target blocks
-		body.queue_free()
-	destroy_bullet()
+	if not body.is_in_group("Debris"):
+		if body.is_in_group("TargetBlock"):
+			# Disable target blocks
+			body.queue_free()
+		destroy_bullet()
 
 func _on_area_entered(area):
 	if area.is_in_group("Laptop") and area.active:
@@ -28,6 +29,12 @@ func destroy_bullet():
 	sprite.play("default")
 	set_deferred("monitoring", false)
 	motion = Vector2.ZERO
+	# Explode debris
+	var bodies = get_overlapping_bodies()
+	for body in bodies:
+		if body is RigidBody2D:
+			var delta = body.position - position
+			body.apply_force(delta.normalized() * 1000)
 
 func _on_bullet_sprite_animation_finished():
 	queue_free()
