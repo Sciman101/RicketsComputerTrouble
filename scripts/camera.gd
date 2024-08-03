@@ -11,7 +11,7 @@ func _ready():
 	Utils.camera = self
 	set_path(path)
 
-func add_screenshake(amount:float=3,duration:float=0.05):
+func add_screenshake(amount:float=4,duration:float=0.075):
 	screenshake_amount = amount
 	screenshake_duration += duration
 

@@ -191,11 +191,9 @@ func shoot():
 	
 	# Create scenes
 	for i in range(-1,2):
-		var bullet = Bullet.instantiate()
-		get_parent().add_child(bullet)
-		bullet.global_position = global_position + bullet_direction * 32
+		var bullet = Utils.spawn(Bullet, global_position + bullet_direction * 32, RoomManager.current_scene)
 		var dir = bullet_direction.rotated(deg_to_rad(i * bullet_spread))
-		bullet.rotation = -dir.angle_to(Vector2.RIGHT)
+		# bullet.rotation = -dir.angle_to(Vector2.RIGHT)
 		bullet.motion = dir * bullet_speed * randf_range(0.95,1.05)
 	
 	SoundManager.play('shotgun-fire')

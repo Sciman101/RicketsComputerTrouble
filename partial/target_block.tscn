@@ -6,6 +6,7 @@
 size = Vector2(64, 64)
 
 [node name="TargetBlock" type="StaticBody2D" groups=["TargetBlock"]]
+collision_layer = 9
 
 [node name="Target" type="Sprite2D" parent="."]
 position = Vector2(16, 16)
