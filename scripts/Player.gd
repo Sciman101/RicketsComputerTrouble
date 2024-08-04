@@ -161,6 +161,9 @@ func _handle_gun(delta):
 		if is_on_floor():
 			# Start timer before we can reload again
 			reload_timer.start()
+	
+	if Input.is_action_just_pressed("restart") and last_door:
+		die()
 
 func can_shoot():
 	return ammo > 0
@@ -228,6 +231,9 @@ func die():
 	Utils.camera.add_screenshake(8)
 	
 	Stats.deaths += 1 
+	
+	await get_tree().create_timer(0.75).timeout
+	respawn()
 
 func warp_to_door(door):
 	last_door = door
@@ -256,5 +262,3 @@ func respawn():
 func _on_hazard_detector_body_entered(body):
 	if last_door:
 		die()
-		await get_tree().create_timer(0.75).timeout
-		respawn()

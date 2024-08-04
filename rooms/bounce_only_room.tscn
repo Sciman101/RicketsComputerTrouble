@@ -33,3 +33,7 @@ position = Vector2(2026, 34)
 
 [node name="Laptop4" parent="." index="7" instance=ExtResource("3_wd8bd")]
 position = Vector2(1042, -120)
+
+[connection signal="body_entered" from="TileMap/ShellPickup" to="TileMap/ShellPickup" method="_on_body_entered"]
+[connection signal="body_entered" from="TileMap/@Area2D@58495" to="TileMap/@Area2D@58495" method="_on_body_entered"]
+[connection signal="body_entered" from="TileMap/@Area2D@58496" to="TileMap/@Area2D@58496" method="_on_body_entered"]
