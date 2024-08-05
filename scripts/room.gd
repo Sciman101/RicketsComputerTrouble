@@ -1,3 +1,7 @@
 extends Node2D
 
-@export var room_name : String = "!!!Unnamed Room!!!"
+@export var popup_text : String
+
+func _ready():
+	if popup_text.length() > 0:
+		Ui.show_popup(popup_text)

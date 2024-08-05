@@ -37,3 +37,27 @@ offset_left = 48.0
 offset_right = 96.0
 offset_bottom = 48.0
 texture = ExtResource("1_cbrxj")
+
+[node name="PopupText" type="ColorRect" parent="."]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -700.0
+offset_bottom = 40.0
+grow_horizontal = 0
+color = Color(0, 0, 0, 1)
+
+[node name="MarginContainer" type="MarginContainer" parent="PopupText"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_right = 8
+
+[node name="Text" type="Label" parent="PopupText/MarginContainer"]
+layout_mode = 2
+text = "Popup text goes here"
+vertical_alignment = 1

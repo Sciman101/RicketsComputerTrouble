@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://bi3jdoaypknep"]
+[gd_scene load_steps=6 format=3 uid="uid://bi3jdoaypknep"]
 
 [ext_resource type="PackedScene" uid="uid://c8kekywtbsxfv" path="res://rooms/template_room.tscn" id="1_3r0fw"]
 [ext_resource type="PackedScene" uid="uid://d2gaj3ryohl5r" path="res://partial/door.tscn" id="2_syba0"]
 [ext_resource type="PackedScene" uid="uid://32lojrt5n25o" path="res://partial/laptop.tscn" id="3_nja84"]
+[ext_resource type="PackedScene" uid="uid://nlxnfe2u4rb7" path="res://partial/help.tscn" id="4_tclxq"]
 
 [sub_resource type="Curve2D" id="Curve2D_xt54s"]
 _data = {
@@ -38,3 +39,7 @@ position = Vector2(883, 527)
 
 [node name="Laptop4" parent="." index="8" instance=ExtResource("3_nja84")]
 position = Vector2(1001, 563)
+
+[node name="Help" parent="." index="9" instance=ExtResource("4_tclxq")]
+position = Vector2(206, 187)
+help_text = "Shoot target blocks to destroy them"
