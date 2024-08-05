@@ -43,3 +43,7 @@ position = Vector2(1001, 563)
 [node name="Help" parent="." index="9" instance=ExtResource("4_tclxq")]
 position = Vector2(206, 187)
 help_text = "Shoot target blocks to destroy them"
+
+[node name="Help2" parent="." index="10" instance=ExtResource("4_tclxq")]
+position = Vector2(1091, 185)
+help_text = "Hold Down or Left Trigger to aim down while in the air"
