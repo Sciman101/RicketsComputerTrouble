@@ -34,6 +34,9 @@ const TAIL_OFFSETS := [12,14,16,14]
 @onready var superbounce_graphic = $Appearance/ShotgunSprite/Superbounce
 @onready var tail = $Tail
 
+@onready var jump_buffer = $JumpBuffer
+@onready var coyote_timer = $CoyoteTimer
+
 @onready var reload_timer = $ReloadTimer
 @onready var bounce_raycast = $BounceRaycast
 
@@ -77,12 +80,18 @@ func _handle_movement(delta : float):
 	if is_on_floor() and not was_on_floor and not can_shoot():
 		reload_timer.stop()
 		reload_shotgun()
+	elif was_on_floor and not is_on_floor():
+		coyote_timer.start()
 
 	# Handle jump.
-	if Input.is_action_just_pressed("jump") and is_on_floor():
-		velocity.y = -jump_velocity
+	if Input.is_action_just_pressed("jump") and not wants_to_jump():
+		jump_buffer.start()
 	elif Input.is_action_just_released("jump") and not is_on_floor() and velocity.y < 0:
 		velocity.y *= jump_release_brake
+	
+	if wants_to_jump() and able_to_jump():
+		velocity.y = -jump_velocity
+		jump_buffer.stop()
 	
 	# Handle bounce
 	var did_bounce : bool = false
@@ -133,6 +142,12 @@ func _handle_movement(delta : float):
 	was_on_floor = is_on_floor()
 	
 	move_and_slide()
+
+func wants_to_jump():
+	return not jump_buffer.is_stopped()
+
+func able_to_jump():
+	return is_on_floor() or  not coyote_timer.is_stopped()
 
 func _handle_gun(delta):
 	

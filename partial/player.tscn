@@ -137,6 +137,14 @@ shape = SubResource("RectangleShape2D_m8tgq")
 wait_time = 0.4
 one_shot = true
 
+[node name="JumpBuffer" type="Timer" parent="."]
+wait_time = 0.05
+one_shot = true
+
+[node name="CoyoteTimer" type="Timer" parent="."]
+wait_time = 0.1
+one_shot = true
+
 [node name="HazardDetector" type="Area2D" parent="."]
 visible = false
 collision_layer = 0
