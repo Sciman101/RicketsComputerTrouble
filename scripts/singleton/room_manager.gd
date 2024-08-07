@@ -46,6 +46,7 @@ func goto(scene_to_load:String, linked_door_name:String="", hide_player:bool = f
 	tween.tween_property(fade_rect, 'modulate', Color.TRANSPARENT, FADE_DURATION)
 	await tween.finished
 	is_transitioning = false
+	Ui.hide_popup()
 	if hide_player:
 		Player.hide()
 	else:

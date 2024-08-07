@@ -15,7 +15,9 @@ func show_popup(text:String, duration:float=5.0):
 		await tween.finished
 	if duration > 0:
 		await get_tree().create_timer(duration).timeout
-		hide_popup()
+		# If the popup changed, don't hide
+		if popup_label.text == text:
+			hide_popup()
 
 func hide_popup():
 	var tween = get_tree().create_tween()

@@ -23,25 +23,24 @@ curve = SubResource("Curve2D_cb6ij")
 position = Vector2(134, 384)
 default_spawn = true
 
-[node name="Exit1" parent="." index="4" instance=ExtResource("2_iobns")]
-position = Vector2(1104, 384)
-linked_door_name = "Entrance"
-scene_to_load = "res://rooms/tall_room.tscn"
-
-[node name="Exit2" parent="." index="5" instance=ExtResource("2_iobns")]
+[node name="Exit2" parent="." index="4" instance=ExtResource("2_iobns")]
 position = Vector2(2268, 384)
 linked_door_name = "Entrance"
 scene_to_load = "res://rooms/double_shot_room.tscn"
 
-[node name="Laptop" parent="." index="6" instance=ExtResource("3_oegde")]
+[node name="Laptop" parent="." index="5" instance=ExtResource("3_oegde")]
 position = Vector2(896, 508)
 
-[node name="Laptop3" parent="." index="7" instance=ExtResource("3_oegde")]
+[node name="Laptop3" parent="." index="6" instance=ExtResource("3_oegde")]
 position = Vector2(258, 334)
 
-[node name="Laptop2" parent="." index="8" instance=ExtResource("3_oegde")]
+[node name="Laptop2" parent="." index="7" instance=ExtResource("3_oegde")]
 position = Vector2(1196, 252)
 
-[node name="Help" parent="." index="9" instance=ExtResource("4_cglds")]
+[node name="Help" parent="." index="8" instance=ExtResource("4_cglds")]
 position = Vector2(201, 340)
 help_text = "You can't walk on rings, but you can bounce on them"
+
+[node name="Help2" parent="." index="9" instance=ExtResource("4_cglds")]
+position = Vector2(1111, 349)
+help_text = "Shooting horizontally while in the air launches you"

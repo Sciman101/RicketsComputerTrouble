@@ -37,10 +37,14 @@ shape = SubResource("RectangleShape2D_tr5m5")
 
 [node name="Entrance" parent="." index="4" instance=ExtResource("2_8frrm")]
 position = Vector2(120, 224)
+linked_door_name = "Entrance"
+scene_to_load = "res://rooms/double_shot_room.tscn"
 default_spawn = true
 
 [node name="Exit" parent="." index="5" instance=ExtResource("2_8frrm")]
 position = Vector2(46, 992)
+linked_door_name = "Entrance"
+scene_to_load = "res://rooms/tall_room.tscn"
 
 [node name="Laptop" parent="." index="6" instance=ExtResource("3_l61xo")]
 position = Vector2(654, -140)
@@ -91,6 +95,4 @@ position = Vector2(553, 721)
 position = Vector2(110, 401)
 help_text = "Bldg Maintenance: STOP LEAVING LAPTOPS IN THE VENTILATION SYSTEM!!"
 
-[connection signal="body_entered" from="TileMap/ShellPickup" to="TileMap/ShellPickup" method="_on_body_entered"]
-[connection signal="body_entered" from="TileMap/@Area2D@86914" to="TileMap/@Area2D@86914" method="_on_body_entered"]
 [connection signal="body_entered" from="RevealHiddenRegion" to="TileMap" method="reveal_overlay_layer"]

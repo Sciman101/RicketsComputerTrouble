@@ -20,8 +20,8 @@ curve = SubResource("Curve2D_fnxw2")
 
 [node name="Entrance" parent="." index="3" instance=ExtResource("2_rpis1")]
 position = Vector2(320, 1536)
-linked_door_name = "Exit1"
-scene_to_load = "res://rooms/gap_bounce.tscn"
+linked_door_name = "Exit"
+scene_to_load = "res://rooms/vents.tscn"
 default_spawn = true
 
 [node name="Exit" parent="." index="4" instance=ExtResource("2_rpis1")]
