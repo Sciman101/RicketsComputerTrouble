@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://c8kekywtbsxfv"]
+[gd_scene load_steps=6 format=3 uid="uid://c8kekywtbsxfv"]
 
 [ext_resource type="Script" path="res://scripts/room.gd" id="1_dvlua"]
 [ext_resource type="TileSet" uid="uid://8xbeyp38fce1" path="res://default_tiles.tres" id="1_qiyyk"]
 [ext_resource type="Script" path="res://scripts/camera.gd" id="2_253wr"]
+[ext_resource type="Script" path="res://scripts/TileMapHelper.gd" id="3_bwmkm"]
 
 [sub_resource type="Curve2D" id="Curve2D_nam17"]
 _data = {
@@ -23,6 +24,7 @@ layer_1/name = "Overlay"
 layer_1/z_index = 20
 layer_1/navigation_enabled = false
 layer_1/tile_data = PackedInt32Array()
+script = ExtResource("3_bwmkm")
 
 [node name="Camera2D" type="Camera2D" parent="." node_paths=PackedStringArray("path")]
 position = Vector2(640, 360)
