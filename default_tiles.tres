@@ -1,9 +1,12 @@
-[gd_resource type="TileSet" load_steps=8 format=3 uid="uid://8xbeyp38fce1"]
+[gd_resource type="TileSet" load_steps=9 format=3 uid="uid://8xbeyp38fce1"]
 
 [ext_resource type="Texture2D" uid="uid://nbap4buah48a" path="res://images/room_tiles.png" id="1_yb034"]
 [ext_resource type="PackedScene" uid="uid://cjgiwa6nbii8s" path="res://partial/target_block.tscn" id="2_sthu0"]
 [ext_resource type="PackedScene" uid="uid://comiv7xfvwtyv" path="res://partial/shell_pickup.tscn" id="3_8ja0c"]
 [ext_resource type="Texture2D" uid="uid://2xyklmrk2em6" path="res://images/decor_tiles.png" id="4_yqd82"]
+
+[sub_resource type="TileMapPattern" id="TileMapPattern_875w2"]
+tile_data = PackedInt32Array(0, 196610, 0, 65536, 196610, 1)
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_cv5ax"]
 texture = ExtResource("1_yb034")
@@ -850,6 +853,20 @@ texture_region_size = Vector2i(32, 32)
 12: [2, 0],
 "type": 2
 }
+3:0/0 = 0
+3:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+3:0/0/physics_layer_0/angular_velocity = 0.0
+3:0/0/physics_layer_1/linear_velocity = Vector2(0, 0)
+3:0/0/physics_layer_1/angular_velocity = 0.0
+3:0/0/physics_layer_2/linear_velocity = Vector2(0, 0)
+3:0/0/physics_layer_2/angular_velocity = 0.0
+3:1/0 = 0
+3:1/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+3:1/0/physics_layer_0/angular_velocity = 0.0
+3:1/0/physics_layer_1/linear_velocity = Vector2(0, 0)
+3:1/0/physics_layer_1/angular_velocity = 0.0
+3:1/0/physics_layer_2/linear_velocity = Vector2(0, 0)
+3:1/0/physics_layer_2/angular_velocity = 0.0
 
 [resource]
 tile_size = Vector2i(32, 32)
@@ -862,6 +879,7 @@ physics_layer_2/collision_mask = 8
 sources/0 = SubResource("TileSetAtlasSource_cv5ax")
 sources/1 = SubResource("TileSetScenesCollectionSource_8uclh")
 sources/2 = SubResource("TileSetAtlasSource_kgmuy")
+pattern_0 = SubResource("TileMapPattern_875w2")
 metadata/_better_terrain = {
 "decoration": ["Decoration", Color(0.411765, 0.411765, 0.411765, 1), 3, [], {
 "path": "res://addons/better-terrain/icons/Decoration.svg"
