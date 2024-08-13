@@ -24,6 +24,9 @@ layer_1/name = "Overlay"
 layer_1/z_index = 20
 layer_1/navigation_enabled = false
 layer_1/tile_data = PackedInt32Array()
+layer_2/name = "Background"
+layer_2/z_index = -20
+layer_2/tile_data = PackedInt32Array()
 script = ExtResource("3_bwmkm")
 
 [node name="Camera2D" type="Camera2D" parent="." node_paths=PackedStringArray("path")]
