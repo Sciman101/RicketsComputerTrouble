@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://comiv7xfvwtyv"]
 
 [ext_resource type="Texture2D" uid="uid://cf3q3bldwg761" path="res://images/shell_pickup.png" id="1_8kyry"]
-[ext_resource type="Script" path="res://scripts/shell_pickup.gd" id="1_rfgvq"]
+[ext_resource type="Script" path="res://scripts/objects/shell_pickup.gd" id="1_rfgvq"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_471fn"]
 radius = 32.0

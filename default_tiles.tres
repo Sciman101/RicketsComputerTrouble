@@ -1,8 +1,8 @@
 [gd_resource type="TileSet" load_steps=9 format=3 uid="uid://8xbeyp38fce1"]
 
 [ext_resource type="Texture2D" uid="uid://nbap4buah48a" path="res://images/room_tiles.png" id="1_yb034"]
-[ext_resource type="PackedScene" uid="uid://cjgiwa6nbii8s" path="res://partial/target_block.tscn" id="2_sthu0"]
-[ext_resource type="PackedScene" uid="uid://comiv7xfvwtyv" path="res://partial/shell_pickup.tscn" id="3_8ja0c"]
+[ext_resource type="PackedScene" uid="uid://cjgiwa6nbii8s" path="res://partial/objects/target_block.tscn" id="2_sthu0"]
+[ext_resource type="PackedScene" uid="uid://comiv7xfvwtyv" path="res://partial/objects/shell_pickup.tscn" id="3_8ja0c"]
 [ext_resource type="Texture2D" uid="uid://2xyklmrk2em6" path="res://images/decor_tiles.png" id="4_yqd82"]
 
 [sub_resource type="TileMapPattern" id="TileMapPattern_875w2"]
@@ -772,6 +772,25 @@ texture_region_size = Vector2i(32, 32)
 8: [1, 0],
 "type": 1
 }
+10:0/0 = 0
+10:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+10:0/0/physics_layer_0/angular_velocity = 0.0
+10:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+10:0/0/physics_layer_1/linear_velocity = Vector2(0, 0)
+10:0/0/physics_layer_1/angular_velocity = 0.0
+10:0/0/physics_layer_2/linear_velocity = Vector2(0, 0)
+10:0/0/physics_layer_2/angular_velocity = 0.0
+10:0/0/physics_layer_2/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+10:0/0/custom_data_0 = 1
+10:1/0 = 0
+10:1/0/modulate = Color(1, 1, 1, 0.501961)
+10:1/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+10:1/0/physics_layer_0/angular_velocity = 0.0
+10:1/0/physics_layer_1/linear_velocity = Vector2(0, 0)
+10:1/0/physics_layer_1/angular_velocity = 0.0
+10:1/0/physics_layer_2/linear_velocity = Vector2(0, 0)
+10:1/0/physics_layer_2/angular_velocity = 0.0
+10:1/0/custom_data_0 = 2
 
 [sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_8uclh"]
 resource_name = "Room Assets"
@@ -883,6 +902,8 @@ physics_layer_1/collision_layer = 4
 physics_layer_1/collision_mask = 4
 physics_layer_2/collision_layer = 8
 physics_layer_2/collision_mask = 8
+custom_data_layer_0/name = "Stopwatch Block"
+custom_data_layer_0/type = 2
 sources/0 = SubResource("TileSetAtlasSource_cv5ax")
 sources/1 = SubResource("TileSetScenesCollectionSource_8uclh")
 sources/2 = SubResource("TileSetAtlasSource_kgmuy")

@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://c22g7a6tj3o38"]
 
 [ext_resource type="Texture2D" uid="uid://prrqfwux5kpq" path="res://images/dead_ricket.png" id="1_p73xq"]
-[ext_resource type="Script" path="res://scripts/corpse.gd" id="2_umotx"]
+[ext_resource type="Script" path="res://scripts/objects/corpse.gd" id="2_umotx"]
 
 [node name="Corpse" type="Sprite2D"]
 z_index = 10

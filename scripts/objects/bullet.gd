@@ -15,9 +15,9 @@ func _physics_process(delta):
 		queue_free()
 
 func _on_body_entered(body):
-	if body.is_in_group("TargetBlock"):
-		# Disable target blocks
-		body.queue_free()
+	if body.has_method('on_shot'):
+		# Trigger action
+		body.on_shot(motion)
 	destroy_bullet()
 	SoundManager.play('bullet-impact', 0.8, 0.2, 0.1)
 

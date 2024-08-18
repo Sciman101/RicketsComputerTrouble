@@ -2,7 +2,10 @@ extends TileMap
 
 var overlay_layer_index : int
 var background_layer_index : int
+var platform_layer_index : int
 var overlay_layer_hidden : bool = true
+
+var used_rect : Rect2i
 
 func _ready():
 	for i in get_layers_count():
@@ -11,9 +14,16 @@ func _ready():
 			overlay_layer_index = i
 		if n == "Background":
 			background_layer_index = i
+		if n == "Platforms":
+			platform_layer_index = i
 	# Just in case we disabled it for debuggin
 	set_layer_enabled(overlay_layer_index, true)
 	set_layer_enabled(background_layer_index, true)
+	
+	used_rect = get_used_rect()
+	
+	for node in get_tree().get_nodes_in_group("Stopwatch"):
+		node.toggle_blocks.connect(self.toggle_stopwatch_blocks)
 
 func _use_tile_data_runtime_update(layer: int, coords: Vector2i) -> bool:
 	return layer == overlay_layer_index or layer == background_layer_index
@@ -30,3 +40,12 @@ func reveal_overlay_layer(body):
 
 func set_overlay_layer_modulate(mod:Color):
 	set_layer_modulate(overlay_layer_index, mod)
+
+func toggle_stopwatch_blocks():
+	for x in range(used_rect.position.x, used_rect.position.x+used_rect.size.x):
+		for y in range(used_rect.position.y, used_rect.position.x+used_rect.size.y):
+			var pos = Vector2i(x,y)
+			var dat = get_cell_atlas_coords(platform_layer_index, pos)
+			# Stopwatch blocks. Yes, it sucks to do it this way
+			if dat.x == 10 and dat.y <= 1:
+				set_cell(platform_layer_index, pos, 0, Vector2(10, 1-dat.y))

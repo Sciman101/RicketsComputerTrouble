@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://c48xbo3uxtdx2"]
+
+[ext_resource type="Script" path="res://scripts/objects/stopwatch.gd" id="1_osk78"]
+[ext_resource type="Texture2D" uid="uid://cmjdj2mdep1me" path="res://images/stopwatch.png" id="1_wk3kv"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_frlj0"]
+size = Vector2(64, 64)
+
+[node name="Stopwatch" type="StaticBody2D" groups=["Stopwatch"]]
+collision_layer = 72
+script = ExtResource("1_osk78")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_frlj0")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(2, 2)
+texture = ExtResource("1_wk3kv")
+hframes = 9

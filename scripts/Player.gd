@@ -5,7 +5,7 @@ const MAX_DEFAULT_AMMO := 1
 const TAIL_OFFSETS := [12,14,16,14]
 
 # -- other scenes --
-@onready var Bullet = preload("res://partial/bullet.tscn")
+@onready var Bullet = preload("res://partial/objects/bullet.tscn")
 @onready var Corpse = preload("res://partial/effects/corpse.tscn")
 @onready var ShellDebris = preload("res://partial/effects/shell_debris.tscn")
 
@@ -107,6 +107,9 @@ func _handle_movement(delta : float):
 				SoundManager.play('shotgun-bounce')
 			else:
 				aiming_down = false
+			var col = bounce_raycast.get_collider()
+			if col.has_method('on_bounce'):
+				col.on_bounce(self)
 	
 	# Add the gravity.
 	if not is_on_floor() and not did_bounce:

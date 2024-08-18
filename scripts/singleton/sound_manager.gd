@@ -6,6 +6,7 @@ const Samples = {
 	'shotgun-bounce': preload("res://sfx/shotgun_bounce.wav"),
 	'shotgun-fire': preload("res://sfx/shotgun_fire.wav"),
 	'shotgun-reload': preload("res://sfx/shotgun_reload.wav"),
+	'tick': preload("res://sfx/tick.wav"),
 	'bullet-impact': [preload("res://sfx/bullet_impact-01.wav"),preload("res://sfx/bullet_impact-02.wav"),preload("res://sfx/bullet_impact-03.wav")],
 	'shell-bounce': [preload("res://sfx/shell_fall-02.wav"),preload("res://sfx/shell_fall-01.wav"),preload("res://sfx/shell_fall-03.wav")]
 }
