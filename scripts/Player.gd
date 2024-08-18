@@ -145,6 +145,10 @@ func _handle_movement(delta : float):
 	was_on_floor = is_on_floor()
 	
 	move_and_slide()
+	
+	# If we're stuck in something, push us out of it
+	if test_move(transform, Vector2.ZERO):
+		position += Vector2.UP
 
 func wants_to_jump():
 	return not jump_buffer.is_stopped()
