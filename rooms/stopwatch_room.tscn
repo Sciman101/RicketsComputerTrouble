@@ -21,10 +21,14 @@ curve = SubResource("Curve2D_cwx2l")
 
 [node name="Entrance" parent="." index="3" instance=ExtResource("2_qfpgm")]
 position = Vector2(113, 352)
+linked_door_name = "Exit"
+scene_to_load = "res://rooms/bounce_only_room.tscn"
 default_spawn = true
 
 [node name="Exit" parent="." index="4" instance=ExtResource("2_qfpgm")]
 position = Vector2(1176, 384)
+linked_door_name = "Entrance"
+scene_to_load = "res://rooms/stopwatch_room_2.tscn"
 
 [node name="Stopwatch" parent="." index="5" instance=ExtResource("3_1wo0x")]
 position = Vector2(480, 250)

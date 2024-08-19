@@ -1,6 +1,6 @@
 extends StaticBody2D
 
-@onready var sprite = $Sprite2D
+@onready var graphic = $ProgressGraphic
 
 @export var duration := 5.0
 
@@ -37,11 +37,13 @@ func start_timer(_duration:float):
 		SoundManager.play('tick')
 
 func stop_timer():
-	sprite.frame = 0
+	graphic.value = 0
 	running = false
 	time_left = 0
+	sprite_velocity = Vector2.UP * 100
 	if shot:
 		toggle_blocks.emit()
+		SoundManager.play('ding',1,0.2)
 
 func _process(delta):
 	if running:
@@ -50,10 +52,10 @@ func _process(delta):
 			stop_timer()
 		else:
 			play_sound()
-			sprite.frame = floor((time_left / current_duration) * (sprite.hframes - 1))  + 1
+			graphic.value = (time_left / current_duration)
 	
-	sprite_velocity = Utils.spring(sprite.offset, Vector2.ZERO, sprite_velocity, 10, 0.85)
-	sprite.offset += sprite_velocity * delta
+	sprite_velocity = Utils.spring(graphic.position, Vector2(-32,-32), sprite_velocity, 10, 0.85)
+	graphic.position += sprite_velocity * delta
 
 func play_sound():
 	if shot:

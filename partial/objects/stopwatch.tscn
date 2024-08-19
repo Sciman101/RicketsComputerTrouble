@@ -1,10 +1,18 @@
-[gd_scene load_steps=4 format=3 uid="uid://c48xbo3uxtdx2"]
+[gd_scene load_steps=6 format=3 uid="uid://c48xbo3uxtdx2"]
 
 [ext_resource type="Script" path="res://scripts/objects/stopwatch.gd" id="1_osk78"]
 [ext_resource type="Texture2D" uid="uid://cmjdj2mdep1me" path="res://images/stopwatch.png" id="1_wk3kv"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_frlj0"]
 size = Vector2(64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_45sen"]
+atlas = ExtResource("1_wk3kv")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_btsnr"]
+atlas = ExtResource("1_wk3kv")
+region = Rect2(256, 0, 32, 32)
 
 [node name="Stopwatch" type="StaticBody2D" groups=["Stopwatch"]]
 collision_layer = 72
@@ -13,7 +21,12 @@ script = ExtResource("1_osk78")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_frlj0")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="ProgressGraphic" type="TextureProgressBar" parent="."]
+offset_left = -32.0
+offset_top = -32.0
 scale = Vector2(2, 2)
-texture = ExtResource("1_wk3kv")
-hframes = 9
+max_value = 1.0
+step = 0.0
+fill_mode = 5
+texture_under = SubResource("AtlasTexture_45sen")
+texture_progress = SubResource("AtlasTexture_btsnr")
