@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=3 uid="uid://bxlgsaccbcyjm"]
+
+[ext_resource type="Script" path="res://scripts/objects/buddy.gd" id="1_1i1kn"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_oodcp"]
+size = Vector2(35, 68)
+
+[node name="Buddy" type="Area2D"]
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("1_1i1kn")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -34)
+shape = SubResource("RectangleShape2D_oodcp")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
