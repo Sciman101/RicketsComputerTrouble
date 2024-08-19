@@ -19,7 +19,7 @@ func on_shot(motion):
 
 func on_bounce(player):
 	sprite_velocity -= player.global_position - global_position
-	start_timer()
+	# start_timer()
 
 func start_timer():
 	if not running:
