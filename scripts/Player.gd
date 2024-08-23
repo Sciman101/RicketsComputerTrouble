@@ -259,7 +259,7 @@ func die():
 
 func warp_to_door(door):
 	last_door = door
-	position = door.position + Vector2(0,-16)
+	position = door.position + Vector2(0,-40)
 	reset_state()
 
 func reset_state():

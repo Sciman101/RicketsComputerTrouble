@@ -20,6 +20,8 @@ curve = SubResource("Curve2D_4g3ra")
 
 [node name="Entrance" parent="." index="3" instance=ExtResource("2_oxqih")]
 position = Vector2(132, 320)
+linked_door_name = "Exit"
+scene_to_load = "res://rooms/stopwatch_room_2.tscn"
 default_spawn = true
 
 [node name="Exit" parent="." index="4" instance=ExtResource("2_oxqih")]
@@ -29,6 +31,12 @@ position = Vector2(384, -641)
 [node name="Laptop" parent="." index="5" instance=ExtResource("3_hgr32")]
 position = Vector2(255, 65)
 
+[node name="Laptop2" parent="." index="6" instance=ExtResource("3_hgr32")]
+position = Vector2(70, -102)
+
+[node name="Laptop3" parent="." index="7" instance=ExtResource("3_hgr32")]
+position = Vector2(70, -102)
+
 [connection signal="body_entered" from="TileMap/ShellPickup" to="TileMap/ShellPickup" method="_on_body_entered"]
-[connection signal="body_entered" from="TileMap/@Area2D@36496" to="TileMap/@Area2D@36496" method="_on_body_entered"]
-[connection signal="body_entered" from="TileMap/@Area2D@44542" to="TileMap/@Area2D@44542" method="_on_body_entered"]
+[connection signal="body_entered" from="TileMap/@Area2D@51310" to="TileMap/@Area2D@51310" method="_on_body_entered"]
+[connection signal="body_entered" from="TileMap/@Area2D@51313" to="TileMap/@Area2D@51313" method="_on_body_entered"]

@@ -79,7 +79,7 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_m8tgq"]
-size = Vector2(35, 74)
+size = Vector2(36.5, 77)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ewseq"]
 size = Vector2(22, 34)
@@ -108,10 +108,10 @@ texture_mode = 2
 script = ExtResource("2_tm25d")
 
 [node name="Appearance" type="Node2D" parent="."]
+position = Vector2(0, -1.5)
 
 [node name="RicketSprite" type="AnimatedSprite2D" parent="Appearance"]
 sprite_frames = SubResource("SpriteFrames_qbg1k")
-animation = &"air"
 autoplay = "default"
 
 [node name="ShotgunSprite" type="Sprite2D" parent="Appearance"]
@@ -130,7 +130,6 @@ target_position = Vector2(0, 20)
 collision_mask = 8
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(4.5, 3)
 shape = SubResource("RectangleShape2D_m8tgq")
 
 [node name="ReloadTimer" type="Timer" parent="."]
