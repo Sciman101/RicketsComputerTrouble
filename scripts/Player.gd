@@ -56,6 +56,8 @@ var target_gun_angle : float = 0
 var gun_rotational_velocity : float = 0
 var gun_velocity : Vector2
 
+var shots_fired : int = 0
+
 # The last door we were at
 var last_door : Node2D
 
@@ -204,9 +206,11 @@ func reload_shotgun():
 			shotgun_sprite.position += Vector2(-2, 0)
 			
 		# Make shell
-		var shell_debris = Utils.spawn(ShellDebris, global_position, RoomManager.current_scene)
-		shell_debris.apply_force(Vector2(-facing * 300, randf_range(-300,-200)))
-		shell_debris.apply_torque(100)
+		for i in shots_fired:
+			var shell_debris = Utils.spawn(ShellDebris, global_position, RoomManager.current_scene)
+			shell_debris.apply_force(Vector2(-facing * 300, randf_range(-300,-200)))
+			shell_debris.apply_torque(100)
+		shots_fired = 0
 	Ui.ammo_counter.set_amount(ammo)
 
 func shoot():
@@ -237,12 +241,14 @@ func shoot():
 	shotgun_sprite.position -= bullet_direction * 8
 	
 	ammo -= 1
+	shots_fired += 1
 	Ui.ammo_counter.set_amount(ammo)
 	
 	Utils.camera.kick(bullet_direction * -4)
 
 func die():
 	disable()
+	shots_fired = 0
 	
 	# Create corpse
 	var corpse = Utils.spawn(Corpse, position, get_parent())
