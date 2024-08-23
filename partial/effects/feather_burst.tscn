@@ -1,6 +1,7 @@
-[gd_scene load_steps=3 format=3 uid="uid://dl1q0j34gqxeq"]
+[gd_scene load_steps=4 format=3 uid="uid://dl1q0j34gqxeq"]
 
 [ext_resource type="Texture2D" uid="uid://b4vdorg04d43f" path="res://images/feather.png" id="1_qr7s5"]
+[ext_resource type="Texture2D" uid="uid://cmsh8ak5oelfg" path="res://images/target_flash.png" id="2_jmvc4"]
 
 [sub_resource type="Gradient" id="Gradient_pyibx"]
 offsets = PackedFloat32Array(0.866667, 1)
@@ -22,3 +23,13 @@ angle_min = -180.0
 angle_max = 180.0
 scale_amount_max = 1.5
 color_ramp = SubResource("Gradient_pyibx")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_jmvc4")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.05
+one_shot = true
+autostart = true
+
+[connection signal="timeout" from="Timer" to="Sprite2D" method="hide"]

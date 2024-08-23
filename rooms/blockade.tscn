@@ -27,6 +27,8 @@ default_spawn = true
 [node name="Exit" parent="." index="4" instance=ExtResource("2_oxqih")]
 z_index = -20
 position = Vector2(384, -641)
+linked_door_name = "Entrance"
+scene_to_load = "res://rooms/take_flight.tscn"
 
 [node name="Laptop" parent="." index="5" instance=ExtResource("3_hgr32")]
 position = Vector2(255, 65)
