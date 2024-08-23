@@ -27,4 +27,6 @@ func on_shot():
 			debris.apply_torque(randf_range(-100,100))
 		Utils.spawn(Explosion, global_position, RoomManager.current_scene)
 		
+		SoundManager.play('laptop-destroy',1,0.4,0.5)
+		
 		queue_free()

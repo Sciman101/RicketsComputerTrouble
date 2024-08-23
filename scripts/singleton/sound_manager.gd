@@ -10,6 +10,7 @@ const Samples = {
 	'ding': preload("res://sfx/611113__5ro4__bell-ding-1.wav"),
 	'bullet-impact': [preload("res://sfx/bullet_impact-01.wav"),preload("res://sfx/bullet_impact-02.wav"),preload("res://sfx/bullet_impact-03.wav")],
 	'shell-bounce': [preload("res://sfx/shell_fall-02.wav"),preload("res://sfx/shell_fall-01.wav"),preload("res://sfx/shell_fall-03.wav")],
+	'laptop-destroy': [preload("res://sfx/laptop-destroy-1.wav")],
 }
 
 

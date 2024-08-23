@@ -65,4 +65,4 @@ func play_sound():
 		if time_left <= last_sound_time - interval:
 			last_sound_time = time_left
 			var pitch = (floori(time_left / interval) % 2) * 0.2 + 1
-			SoundManager.play('tick', pitch)
+			SoundManager.play('tick', pitch, 1.75)
