@@ -11,6 +11,7 @@ const Samples = {
 	'bullet-impact': [preload("res://sfx/bullet_impact-01.wav"),preload("res://sfx/bullet_impact-02.wav"),preload("res://sfx/bullet_impact-03.wav")],
 	'shell-bounce': [preload("res://sfx/shell_fall-02.wav"),preload("res://sfx/shell_fall-01.wav"),preload("res://sfx/shell_fall-03.wav")],
 	'laptop-destroy': [preload("res://sfx/laptop-destroy-1.wav")],
+	'children-cheering': preload("res://sfx/children_cheering.wav"),
 }
 
 

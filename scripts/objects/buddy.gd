@@ -19,4 +19,5 @@ func _ready():
 func _on_body_entered(body):
 	if not Stats.buddy_has_been_visited(name):
 		sprite.play("visited")
+		SoundManager.play('children-cheering')
 		Ui.show_popup("You found a buddy!")
