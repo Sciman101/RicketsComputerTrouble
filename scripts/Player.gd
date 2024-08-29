@@ -269,8 +269,10 @@ func warp_to_door(door):
 	reset_state()
 
 func reset_state():
+	Ui.ammo_counter.set_amount(ammo)
 	velocity = Vector2.ZERO
 	aiming_down = false
+	ammo = 1
 	enable()
 
 func enable():

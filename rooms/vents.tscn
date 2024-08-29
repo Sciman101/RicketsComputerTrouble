@@ -93,6 +93,6 @@ position = Vector2(553, 721)
 position = Vector2(110, 401)
 help_text = "Bldg Maintenance: STOP LEAVING LAPTOPS IN THE VENTILATION SYSTEM!!"
 
-[connection signal="body_entered" from="TileMap/@Area2D@27372" to="TileMap/@Area2D@27372" method="_on_body_entered"]
-[connection signal="body_entered" from="TileMap/@Area2D@27373" to="TileMap/@Area2D@27373" method="_on_body_entered"]
+[connection signal="body_entered" from="TileMap/ShellPickup" to="TileMap/ShellPickup" method="_on_body_entered"]
+[connection signal="body_entered" from="TileMap/@Area2D@33797" to="TileMap/@Area2D@33797" method="_on_body_entered"]
 [connection signal="body_entered" from="RevealHiddenRegion" to="TileMap" method="reveal_overlay_layer"]

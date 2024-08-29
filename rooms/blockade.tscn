@@ -28,7 +28,7 @@ default_spawn = true
 z_index = -20
 position = Vector2(384, -641)
 linked_door_name = "Entrance"
-scene_to_load = "res://rooms/take_flight.tscn"
+scene_to_load = "res://rooms/filler_room.tscn"
 
 [node name="Laptop" parent="." index="5" instance=ExtResource("3_hgr32")]
 position = Vector2(255, 65)
@@ -38,3 +38,7 @@ position = Vector2(70, -102)
 
 [node name="Laptop3" parent="." index="7" instance=ExtResource("3_hgr32")]
 position = Vector2(70, -102)
+
+[connection signal="body_entered" from="TileMap/ShellPickup" to="TileMap/ShellPickup" method="_on_body_entered"]
+[connection signal="body_entered" from="TileMap/@Area2D@41943" to="TileMap/@Area2D@41943" method="_on_body_entered"]
+[connection signal="body_entered" from="TileMap/@Area2D@41946" to="TileMap/@Area2D@41946" method="_on_body_entered"]
