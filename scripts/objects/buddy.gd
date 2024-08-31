@@ -21,3 +21,4 @@ func _on_body_entered(body):
 		sprite.play("visited")
 		SoundManager.play('children-cheering')
 		Ui.show_popup("You found a buddy!")
+		Stats.visit_buddy(name)

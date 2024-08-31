@@ -7,8 +7,12 @@ const DARKENED := Color(0,0,0,0.5)
 
 var active := true
 
+func _ready():
+	Player.on_respawn.connect(self._on_resupply_timer_timeout)
+
 func _on_resupply_timer_timeout():
 	active = true
+	timer.stop()
 	modulate = Color.WHITE
 
 func _on_body_entered(body):

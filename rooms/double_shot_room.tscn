@@ -31,5 +31,3 @@ position = Vector2(184, 220)
 [node name="Help" parent="." index="7" instance=ExtResource("4_3mrx8")]
 position = Vector2(482, 570)
 help_text = "Pick up shells to get extra shots!"
-
-[connection signal="body_entered" from="TileMap/ShellPickup" to="TileMap/ShellPickup" method="_on_body_entered"]

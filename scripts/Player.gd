@@ -61,6 +61,8 @@ var shots_fired : int = 0
 # The last door we were at
 var last_door : Node2D
 
+signal on_respawn
+
 func _ready():
 	gravity = (2 * jump_height) / (jump_time * jump_time)
 	jump_velocity = gravity * jump_time
@@ -287,6 +289,7 @@ func disable():
 
 func respawn():
 	warp_to_door(last_door)
+	on_respawn.emit()
 	reset_state()
 
 func _on_hazard_detector_body_entered(body):
