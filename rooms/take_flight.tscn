@@ -33,17 +33,3 @@ scene_to_load = "res://rooms/chambers.tscn"
 [node name="Help" parent="." index="5" instance=ExtResource("3_mbnln")]
 position = Vector2(1764, 345)
 help_text = "Why do you have this room in your house??"
-
-[connection signal="body_entered" from="TileMap/ShellPickup" to="TileMap/ShellPickup" method="_on_body_entered"]
-[connection signal="body_entered" from="TileMap/@Area2D@51098" to="TileMap/@Area2D@51098" method="_on_body_entered"]
-[connection signal="body_entered" from="TileMap/@Area2D@51099" to="TileMap/@Area2D@51099" method="_on_body_entered"]
-[connection signal="body_entered" from="TileMap/@Area2D@51100" to="TileMap/@Area2D@51100" method="_on_body_entered"]
-[connection signal="body_entered" from="TileMap/@Area2D@51101" to="TileMap/@Area2D@51101" method="_on_body_entered"]
-[connection signal="body_entered" from="TileMap/@Area2D@51102" to="TileMap/@Area2D@51102" method="_on_body_entered"]
-[connection signal="body_entered" from="TileMap/@Area2D@51103" to="TileMap/@Area2D@51103" method="_on_body_entered"]
-[connection signal="body_entered" from="TileMap/@Area2D@51104" to="TileMap/@Area2D@51104" method="_on_body_entered"]
-[connection signal="body_entered" from="TileMap/@Area2D@51105" to="TileMap/@Area2D@51105" method="_on_body_entered"]
-[connection signal="body_entered" from="TileMap/@Area2D@54430" to="TileMap/@Area2D@54430" method="_on_body_entered"]
-[connection signal="body_entered" from="TileMap/@Area2D@54431" to="TileMap/@Area2D@54431" method="_on_body_entered"]
-[connection signal="body_entered" from="TileMap/@Area2D@54432" to="TileMap/@Area2D@54432" method="_on_body_entered"]
-[connection signal="body_entered" from="TileMap/@Area2D@54439" to="TileMap/@Area2D@54439" method="_on_body_entered"]
