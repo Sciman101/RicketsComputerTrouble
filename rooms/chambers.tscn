@@ -62,6 +62,8 @@ curve = SubResource("Curve2D_2a8bw")
 
 [node name="Entrance" parent="." index="3" instance=ExtResource("2_j22br")]
 position = Vector2(113, 832)
+linked_door_name = "Exit"
+scene_to_load = "res://rooms/take_flight.tscn"
 default_spawn = true
 
 [node name="Exit" parent="." index="4" instance=ExtResource("2_j22br")]
@@ -101,7 +103,7 @@ spriteframes = SubResource("SpriteFrames_6f3ci")
 offset = Vector2(0, -56)
 
 [connection signal="body_entered" from="TileMap/ShellPickup" to="TileMap/ShellPickup" method="_on_body_entered"]
-[connection signal="body_entered" from="TileMap/@Area2D@24025" to="TileMap/@Area2D@24025" method="_on_body_entered"]
-[connection signal="body_entered" from="TileMap/@Area2D@24026" to="TileMap/@Area2D@24026" method="_on_body_entered"]
-[connection signal="body_entered" from="TileMap/@Area2D@24027" to="TileMap/@Area2D@24027" method="_on_body_entered"]
+[connection signal="body_entered" from="TileMap/@Area2D@29227" to="TileMap/@Area2D@29227" method="_on_body_entered"]
+[connection signal="body_entered" from="TileMap/@Area2D@29228" to="TileMap/@Area2D@29228" method="_on_body_entered"]
+[connection signal="body_entered" from="TileMap/@Area2D@29229" to="TileMap/@Area2D@29229" method="_on_body_entered"]
 [connection signal="body_entered" from="OverlayRevealer" to="TileMap" method="reveal_overlay_layer"]
