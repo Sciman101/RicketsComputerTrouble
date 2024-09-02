@@ -16,23 +16,23 @@ _data = {
 }
 point_count = 2
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_saah0"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_nllkq"]
 atlas = ExtResource("6_30dac")
-region = Rect2(0, 0, 64, 112)
+region = Rect2(0, 0, 96, 112)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_62crm"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_183k4"]
 atlas = ExtResource("6_30dac")
-region = Rect2(64, 0, 64, 112)
+region = Rect2(96, 0, 96, 112)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_qa7ix"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_hapdr"]
 atlas = ExtResource("6_30dac")
-region = Rect2(128, 0, 64, 112)
+region = Rect2(192, 0, 96, 112)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_tljmw"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_saah0")
+"texture": SubResource("AtlasTexture_nllkq")
 }],
 "loop": true,
 "name": &"default",
@@ -40,10 +40,10 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_62crm")
+"texture": SubResource("AtlasTexture_183k4")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_qa7ix")
+"texture": SubResource("AtlasTexture_hapdr")
 }],
 "loop": true,
 "name": &"visited",
