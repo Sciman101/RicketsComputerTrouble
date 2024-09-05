@@ -228,6 +228,7 @@ func shoot():
 		bullet.motion = dir * bullet_speed * randf_range(0.95,1.05)
 	
 	SoundManager.play('shotgun-fire')
+	Stats.shoots += 1
 	# Apply velocity
 	if not is_on_floor():
 		if aiming_down:

@@ -11,6 +11,10 @@ func _ready():
 	active = RoomManager.laptops.get(get_path(), true)
 	if not active:
 		modulate = Color(0,0,0,0.5)
+		
+	if not RoomManager.seen_laptops.get(get_path(), false):
+		Stats.laptops_total += 1
+		RoomManager.seen_laptops[get_path()] = true
 
 func on_shot():
 	if active:

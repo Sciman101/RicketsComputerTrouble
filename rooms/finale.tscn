@@ -27,7 +27,7 @@ default_spawn = true
 
 [node name="Exit" parent="." index="4" instance=ExtResource("2_67pu8")]
 position = Vector2(1204, 704)
-scene_to_load = "res://rooms/penultimate.tscn"
+scene_to_load = "res://endscreen.tscn"
 
 [node name="Laptop" parent="." index="5" instance=ExtResource("3_wabgh")]
 position = Vector2(1187, 100)

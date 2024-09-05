@@ -12,7 +12,7 @@ var has_connected_door : bool = true
 func _ready():
 	sprite.frame = 0
 	set_process_unhandled_input(true)
-	if linked_door_name.length() == 0:
+	if not scene_to_load:
 		modulate = Color.GRAY
 		has_connected_door = false
 
