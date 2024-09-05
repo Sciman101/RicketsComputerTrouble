@@ -94,7 +94,7 @@ help_text = "You can't walk on rings, but you can bounce on them"
 position = Vector2(1111, 349)
 help_text = "Shooting horizontally while in the air launches you"
 
-[node name="BuddyIekika" parent="." index="11" instance=ExtResource("5_chaa6")]
+[node name="Iekika" parent="." index="11" instance=ExtResource("5_chaa6")]
 position = Vector2(140, 576)
 spriteframes = SubResource("SpriteFrames_tljmw")
 offset = Vector2(0, -47)

@@ -11,7 +11,10 @@ func _ready():
 	
 	texts.append("The end!\n")
 	texts.append("Laptops: %s/%s" % [Stats.laptops, Stats.laptops_total])
-	texts.append("Buddies: %s/%s" % [Stats.buddies, Stats.buddies_total])
+	texts.append("Buddies:")
+	for buddy in Stats.visited_buddies.keys():
+		texts.append(" " + buddy)
+	texts.append("%s/%s" % [Stats.buddies, Stats.buddies_total])
 	texts.append("Deaths: %s" % Stats.deaths)
 	texts.append("Shots Fired: %s" % Stats.shots)
 	
@@ -19,6 +22,7 @@ func _ready():
 	completed_100 = completion >= 100
 	texts.append("\nYou got: %s%%!" % completion)
 	texts.append("\nThanks for playing!")
+	texts.append("Ricket by torcado")
 	texts.append("Game by Sciman101")
 	
 	do_endscreen_sequence()
@@ -42,14 +46,26 @@ func do_endscreen_sequence():
 
 func do_info_sequence():
 	var info_label = $Info/MarginContainer/Label
-	var index = 0
 	for text in texts:
 		info_label.text += text + "\n"
-		if index == 3 and completed_100:
+		if text.contains("You got:") and completed_100:
 			SoundManager.play('children-cheering')
-		elif index == texts.size() - 1:
+		elif text.contains("Sciman101"):
 			SoundManager.play('shotgun-fire')
 		else:
 			SoundManager.play('shotgun-reload')
 		await duration(1.25)
-		index += 1
+	await do_context_sequence()
+
+func do_context_sequence():
+	await duration(5)
+	var tween = make_tween()
+	var ctx = [$Context1, $Context2]
+	ctx[0].show()
+	ctx[1].show()
+	ctx[0].position.y -= 720
+	ctx[1].position.y += 720
+	tween.set_parallel(true)
+	tween.tween_property(ctx[0],'position', ctx[0].position + Vector2(0,720), 1).set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_CIRC)
+	tween.tween_property(ctx[1],'position', ctx[1].position - Vector2(0,720), 1).set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_CIRC)
+	await tween.finished
