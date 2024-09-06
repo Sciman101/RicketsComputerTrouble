@@ -50,12 +50,12 @@ help_text = "Hold Down or Left Trigger to aim down while in the air"
 
 [node name="Help3" parent="." index="11" instance=ExtResource("4_tclxq")]
 position = Vector2(531, 559)
-help_text = "While aiming down, you can bounce off your barrel"
+help_text = "Destroy every laptop you find"
 
 [node name="Help4" parent="." index="12" instance=ExtResource("4_tclxq")]
 position = Vector2(725, 195)
 help_text = "Your gun reloads automatically while you're on the ground"
 
 [node name="Help5" parent="." index="13" instance=ExtResource("4_tclxq")]
-position = Vector2(1139, 565)
-help_text = "Press 'up' to enter doors"
+position = Vector2(1083, 360)
+help_text = "While aiming down, you can bounce on your barrel"

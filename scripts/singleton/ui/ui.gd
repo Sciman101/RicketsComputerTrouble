@@ -23,3 +23,4 @@ func show_popup(text:String, duration:float=5.0):
 func hide_popup():
 	var tween = get_tree().create_tween()
 	tween.tween_property(popup, 'position:y', -popup.size.y, 0.5).set_ease(Tween.EASE_IN).set_trans(Tween.TRANS_CUBIC)
+	await tween.finished

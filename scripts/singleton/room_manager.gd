@@ -15,7 +15,6 @@ var current_scene
 
 # Are these laptops destroyed?
 var laptops = {}
-var seen_laptops = {}
 
 signal scene_changed
 

@@ -5,22 +5,20 @@ extends Area2D
 
 var active : bool = true
 
+signal on_destroyed
+
 func _ready():
 	# We use the absolute path of the laptop as a sort of uuid
 	# As long as rooms are named uniquely, this should work
 	active = RoomManager.laptops.get(get_path(), true)
 	if not active:
 		modulate = Color(0,0,0,0.5)
-		
-	if not RoomManager.seen_laptops.get(get_path(), false):
-		Stats.laptops_total += 1
-		RoomManager.seen_laptops[get_path()] = true
 
 func on_shot():
 	if active:
 		active = false
 		Utils.camera.add_screenshake()
-		Stats.laptops += 1 
+		Stats.laptops += 1
 		RoomManager.laptops[get_path()] = false
 		
 		# Make debris
@@ -32,5 +30,7 @@ func on_shot():
 		Utils.spawn(Explosion, global_position, RoomManager.current_scene)
 		
 		SoundManager.play('laptop-destroy',1,0.4,0.5)
+		
+		on_destroyed.emit()
 		
 		queue_free()

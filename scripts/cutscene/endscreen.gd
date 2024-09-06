@@ -27,12 +27,10 @@ func _ready():
 	
 	do_endscreen_sequence()
 
-func duration(duration:float): return get_tree().create_timer(duration).timeout
-
 func make_tween(): return get_tree().create_tween()
 
 func do_endscreen_sequence():
-	await duration(2)
+	await Utils.wait_sec(2)
 	var tween = make_tween()
 	tween.set_parallel(true)
 	tween.tween_property($Black, 'color', Color.TRANSPARENT, 0.4)
@@ -54,11 +52,11 @@ func do_info_sequence():
 			SoundManager.play('shotgun-fire')
 		else:
 			SoundManager.play('shotgun-reload')
-		await duration(1.25)
+		await Utils.wait_sec(1.25)
 	await do_context_sequence()
 
 func do_context_sequence():
-	await duration(5)
+	await Utils.wait_sec(5)
 	var tween = make_tween()
 	var ctx = [$Context1, $Context2]
 	ctx[0].show()

@@ -64,6 +64,8 @@ var shots_fired : int = 0
 var last_door : Node2D
 
 signal on_respawn
+signal on_move
+signal on_jump
 
 func _ready():
 	gravity = (2 * jump_height) / (jump_time * jump_time)
@@ -94,6 +96,7 @@ func _handle_movement(delta : float):
 		jump_buffer.start()
 	elif Input.is_action_just_released("jump") and not is_on_floor() and velocity.y < 0:
 		velocity.y *= jump_release_brake
+		on_jump.emit()
 	
 	if wants_to_jump() and able_to_jump():
 		velocity.y = -jump_velocity
@@ -133,6 +136,7 @@ func _handle_movement(delta : float):
 				shotgun_sprite.rotation_degrees = 10
 		appearance.scale.x = facing
 		sprite.play("run")
+		on_move.emit()
 		tail.position.y = TAIL_OFFSETS[sprite.frame]
 	elif is_on_floor():
 		velocity.x = move_toward(velocity.x, 0, delta * acceleration)
@@ -204,6 +208,7 @@ func get_shell():
 
 func set_has_shotgun(value:bool):
 	self.has_shotgun = value
+	Ui.ammo_counter.set_visible(value)
 	shotgun_sprite.visible = value
 
 func reload_shotgun():

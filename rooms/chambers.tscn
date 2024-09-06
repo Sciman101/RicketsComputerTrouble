@@ -102,8 +102,4 @@ position = Vector2(877, 832)
 spriteframes = SubResource("SpriteFrames_6f3ci")
 offset = Vector2(0, -56)
 
-[connection signal="body_entered" from="TileMap/ShellPickup" to="TileMap/ShellPickup" method="_on_body_entered"]
-[connection signal="body_entered" from="TileMap/@Area2D@27816" to="TileMap/@Area2D@27816" method="_on_body_entered"]
-[connection signal="body_entered" from="TileMap/@Area2D@27817" to="TileMap/@Area2D@27817" method="_on_body_entered"]
-[connection signal="body_entered" from="TileMap/@Area2D@27818" to="TileMap/@Area2D@27818" method="_on_body_entered"]
 [connection signal="body_entered" from="OverlayRevealer" to="TileMap" method="reveal_overlay_layer"]

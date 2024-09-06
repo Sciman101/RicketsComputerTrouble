@@ -16,3 +16,6 @@ func spawn(scene:PackedScene, at:Vector2, parent=null):
 	else:
 		parent.call_deferred('add_child', inst)
 	return inst
+
+func wait_sec(seconds:float):
+	return get_tree().create_timer(seconds).timeout
