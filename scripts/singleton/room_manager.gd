@@ -35,18 +35,21 @@ func load_scene(path:String):
 	scene_changed.emit()
 
 # Load a scene and optionally provide a door to warp to
-func goto(scene_to_load:String, linked_door_name:String="", hide_player:bool = false):
+func goto(scene_to_load:String, linked_door_name:String="", hide_player:bool = false, animate_fade:bool=true):
 	target_scene_path = scene_to_load
 	self.linked_door_name = linked_door_name
-	var tween = get_tree().create_tween()
-	fade_rect.modulate = TRANSPARENT
-	Player.set_physics_process(false)
-	is_transitioning = true
-	tween.tween_property(fade_rect, 'modulate', Color.BLACK, FADE_DURATION)
-	tween.tween_callback(_do_scene_transition)
-	tween.tween_property(fade_rect, 'modulate', Color.TRANSPARENT, FADE_DURATION)
-	await tween.finished
-	is_transitioning = false
+	if animate_fade:
+		var tween = get_tree().create_tween()
+		fade_rect.modulate = TRANSPARENT
+		Player.set_physics_process(false)
+		is_transitioning = true
+		tween.tween_property(fade_rect, 'modulate', Color.BLACK, FADE_DURATION)
+		tween.tween_callback(_do_scene_transition)
+		tween.tween_property(fade_rect, 'modulate', Color.TRANSPARENT, FADE_DURATION)
+		await tween.finished
+		is_transitioning = false
+	else:
+		_do_scene_transition()
 	Ui.hide_popup()
 	if hide_player:
 		Player.hide()

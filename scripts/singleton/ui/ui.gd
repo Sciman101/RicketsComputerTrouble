@@ -6,6 +6,7 @@ extends CanvasLayer
 
 func _ready():
 	popup.position.y = -popup.size.y
+	ammo_counter.hide()
 
 func show_popup(text:String, duration:float=5.0):
 	popup_label.text = text

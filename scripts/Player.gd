@@ -56,6 +56,8 @@ var target_gun_angle : float = 0
 var gun_rotational_velocity : float = 0
 var gun_velocity : Vector2
 
+var has_shotgun : bool = true
+
 var shots_fired : int = 0
 
 # The last door we were at
@@ -162,6 +164,8 @@ func able_to_jump():
 
 func _handle_gun(delta):
 	
+	if not has_shotgun: return
+	
 	if not aiming_down and Input.is_action_pressed("down") and not is_on_floor():
 		aiming_down = true
 	elif Input.is_action_just_released("down"):
@@ -197,6 +201,10 @@ func can_shoot():
 func get_shell():
 	ammo = min(ammo + 1, MAX_AMMO)
 	Ui.ammo_counter.set_amount(ammo)
+
+func set_has_shotgun(value:bool):
+	self.has_shotgun = value
+	shotgun_sprite.visible = value
 
 func reload_shotgun():
 	if not can_shoot():
