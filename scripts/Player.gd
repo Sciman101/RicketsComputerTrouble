@@ -31,7 +31,6 @@ const TAIL_OFFSETS := [12,14,16,14]
 @onready var appearance = $Appearance
 @onready var sprite = $Appearance/RicketSprite
 @onready var shotgun_sprite = $Appearance/ShotgunSprite
-@onready var superbounce_graphic = $Appearance/ShotgunSprite/Superbounce
 @onready var tail = $Tail
 
 @onready var jump_buffer = $JumpBuffer
@@ -94,8 +93,6 @@ func _handle_movement(delta : float):
 	# Handle jump.
 	if Input.is_action_just_pressed("jump") and not wants_to_jump():
 		jump_buffer.start()
-	elif Input.is_action_just_released("jump") and not is_on_floor() and velocity.y < 0:
-		velocity.y *= jump_release_brake
 		on_jump.emit()
 	
 	if wants_to_jump() and able_to_jump():
@@ -110,7 +107,6 @@ func _handle_movement(delta : float):
 		else:
 			velocity.y = max(-velocity.y, -jump_velocity)
 			if velocity.y < -100:
-				superbounce_timer = 0.05
 				shotgun_sprite.position += Vector2.UP * 4
 				did_bounce = true
 				SoundManager.play('shotgun-bounce')
@@ -148,9 +144,6 @@ func _handle_movement(delta : float):
 	
 	if ignore_horizontal_input_buffer > 0:
 		ignore_horizontal_input_buffer -= delta
-	if superbounce_timer > 0:
-		superbounce_timer -= delta
-		superbounce_graphic.hide()
 	
 	was_on_floor = is_on_floor()
 	
@@ -246,8 +239,9 @@ func shoot():
 	if not is_on_floor():
 		if aiming_down:
 			velocity.y = min(-gun_vertical_launch_speed, velocity.y - gun_vertical_launch_speed)
-			if superbounce_timer > 0:
-				superbounce_graphic.show()
+			# Determine if we performed a superbounce
+			if velocity.y < -gun_vertical_launch_speed - 200:
+				SoundManager.play('ding', 1.5, 0.5)
 		else:
 			ignore_horizontal_input_buffer = 0.1
 			velocity.x = gun_horizontal_launch_speed * -facing

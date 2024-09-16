@@ -12,6 +12,7 @@ const Samples = {
 	'shell-bounce': [preload("res://sfx/shell_fall-02.wav"),preload("res://sfx/shell_fall-01.wav"),preload("res://sfx/shell_fall-03.wav")],
 	'laptop-destroy': [preload("res://sfx/laptop-destroy-1.wav")],
 	'children-cheering': preload("res://sfx/children_cheering.wav"),
+	'superbounce': preload("res://sfx/superjump.wav")
 }
 
 
