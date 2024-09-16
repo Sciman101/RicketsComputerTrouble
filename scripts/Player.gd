@@ -203,7 +203,7 @@ func can_shoot():
 	return ammo > 0
 
 func get_shell():
-	ammo = min(ammo + 1, MAX_AMMO)
+	ammo = MAX_AMMO
 	Ui.ammo_counter.set_amount(ammo)
 
 func set_has_shotgun(value:bool):
