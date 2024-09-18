@@ -169,6 +169,7 @@ func _handle_gun(delta):
 		aiming_down = false
 	
 	bounce_raycast.enabled = aiming_down and not is_on_floor()
+	bounce_raycast.target_position = velocity * delta
 	
 	# Make the shotgun wobble a little
 	if not aiming_down:

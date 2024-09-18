@@ -35,7 +35,7 @@ shape = SubResource("RectangleShape2D_tr5m5")
 
 [node name="Entrance" parent="." index="4" instance=ExtResource("2_8frrm")]
 position = Vector2(120, 224)
-linked_door_name = "Entrance"
+linked_door_name = "Exit"
 scene_to_load = "res://rooms/double_shot_room.tscn"
 default_spawn = true
 

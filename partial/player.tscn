@@ -15,7 +15,7 @@ point_count = 3
 size = Vector2(36.5, 77)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ewseq"]
-size = Vector2(22, 34)
+size = Vector2(22, 55)
 
 [node name="Player" type="CharacterBody2D" groups=["Player"]]
 collision_layer = 2
@@ -59,7 +59,7 @@ position = Vector2(28, -5)
 texture = ExtResource("7_xcnh2")
 
 [node name="BounceRaycast" type="RayCast2D" parent="."]
-position = Vector2(0, 30)
+position = Vector2(0, 38)
 target_position = Vector2(0, 20)
 collision_mask = 8
 
@@ -79,11 +79,11 @@ wait_time = 0.1
 one_shot = true
 
 [node name="HazardDetector" type="Area2D" parent="."]
-visible = false
 collision_layer = 0
 collision_mask = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HazardDetector"]
+position = Vector2(0, 10.5)
 shape = SubResource("RectangleShape2D_ewseq")
 
 [connection signal="timeout" from="ReloadTimer" to="." method="reload_shotgun"]

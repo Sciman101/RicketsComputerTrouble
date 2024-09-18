@@ -17,7 +17,7 @@ func _ready():
 		sprite.play('default')
 
 func _on_body_entered(body):
-	if not Stats.buddy_has_been_visited(name):
+	if not Stats.buddy_has_been_visited(name) and $Timer.is_stopped():
 		sprite.play("visited")
 		SoundManager.play('children-cheering')
 		Ui.show_popup("You found a buddy!")
