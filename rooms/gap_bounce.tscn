@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://28m727a5t5vn"]
+[gd_scene load_steps=14 format=3 uid="uid://28m727a5t5vn"]
 
 [ext_resource type="PackedScene" uid="uid://c8kekywtbsxfv" path="res://rooms/template_room.tscn" id="1_joe7b"]
 [ext_resource type="PackedScene" uid="uid://d2gaj3ryohl5r" path="res://partial/objects/door.tscn" id="2_iobns"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://nlxnfe2u4rb7" path="res://partial/objects/help.tscn" id="4_cglds"]
 [ext_resource type="PackedScene" uid="uid://bxlgsaccbcyjm" path="res://partial/objects/buddy.tscn" id="5_chaa6"]
 [ext_resource type="Texture2D" uid="uid://b7mgnrd3e7brn" path="res://images/buddies/iekika.png" id="6_30dac"]
+[ext_resource type="PackedScene" uid="uid://c5n8menduxsxf" path="res://partial/objects/checkpoint.tscn" id="7_k1a3a"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jy2l4"]
 size = Vector2(56, 112)
@@ -94,5 +95,8 @@ help_text = "You can't walk on rings, but you can bounce on them (Hold Down/Left
 position = Vector2(140, 576)
 spriteframes = SubResource("SpriteFrames_tljmw")
 offset = Vector2(0, -47)
+
+[node name="Checkpoint" parent="." index="11" instance=ExtResource("7_k1a3a")]
+position = Vector2(1526, 384)
 
 [connection signal="body_entered" from="Revealer" to="TileMap" method="reveal_overlay_layer"]

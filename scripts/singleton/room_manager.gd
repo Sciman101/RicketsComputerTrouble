@@ -41,6 +41,7 @@ func goto(scene_to_load:String, linked_door_name:String="", hide_player:bool = f
 		var tween = get_tree().create_tween()
 		fade_rect.modulate = TRANSPARENT
 		Player.set_physics_process(false)
+		Player.mark_checkpoint(null)
 		is_transitioning = true
 		tween.tween_property(fade_rect, 'modulate', Color.BLACK, FADE_DURATION)
 		tween.tween_callback(_do_scene_transition)

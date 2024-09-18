@@ -61,6 +61,7 @@ var shots_fired : int = 0
 
 # The last door we were at
 var last_door : Node2D
+var checkpoint : Node2D
 
 signal on_respawn
 signal on_move
@@ -279,6 +280,9 @@ func warp_to_door(door):
 	position = door.position + Vector2(0,-40)
 	reset_state()
 
+func mark_checkpoint(check):
+	checkpoint = check
+
 func reset_state():
 	Ui.ammo_counter.set_amount(ammo)
 	velocity = Vector2.ZERO
@@ -297,7 +301,10 @@ func disable():
 	set_physics_process(false)
 
 func respawn():
-	warp_to_door(last_door)
+	if checkpoint:
+		warp_to_door(checkpoint)
+	else:
+		warp_to_door(last_door)
 	on_respawn.emit()
 	reset_state()
 
