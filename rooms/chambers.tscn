@@ -103,4 +103,6 @@ offset = Vector2(0, -56)
 [node name="Path2D" parent="." index="13"]
 curve = SubResource("Curve2D_2a8bw")
 
+[connection signal="body_entered" from="TileMap/ShellPickup" to="TileMap/ShellPickup" method="_on_body_entered"]
+[connection signal="body_entered" from="TileMap/@Area2D@18874" to="TileMap/@Area2D@18874" method="_on_body_entered"]
 [connection signal="body_entered" from="OverlayRevealer" to="TileMap" method="reveal_overlay_layer"]
