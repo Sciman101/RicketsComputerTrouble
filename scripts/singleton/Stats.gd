@@ -5,7 +5,7 @@ var visited_buddies = {}
 var shots := 0
 var deaths := 0
 var laptops := 0
-var laptops_total := 55
+var laptops_total := 83
 var buddies := 0
 var buddies_total := 5
 

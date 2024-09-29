@@ -16,7 +16,7 @@ func tutorial_sequence():
 	await Player.on_move
 	
 	await Ui.hide_popup()
-	Ui.show_popup("Spacebar or A button to jump", 0)
+	Ui.show_popup("Z key or A button to jump", 0)
 	await Player.on_jump
 	
 	await Ui.hide_popup()

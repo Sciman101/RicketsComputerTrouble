@@ -1,9 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://c8kekywtbsxfv"]
+[gd_scene load_steps=7 format=3 uid="uid://c8kekywtbsxfv"]
 
 [ext_resource type="Script" path="res://scripts/room.gd" id="1_dvlua"]
 [ext_resource type="TileSet" uid="uid://8xbeyp38fce1" path="res://default_tiles.tres" id="1_qiyyk"]
 [ext_resource type="Script" path="res://scripts/camera.gd" id="2_253wr"]
 [ext_resource type="Script" path="res://scripts/TileMapHelper.gd" id="3_bwmkm"]
+[ext_resource type="Texture2D" uid="uid://dyley41iw6jis" path="res://images/background.png" id="5_t6llv"]
 
 [sub_resource type="Curve2D" id="Curve2D_nam17"]
 _data = {
@@ -28,6 +29,15 @@ layer_2/name = "Background"
 layer_2/z_index = -20
 layer_2/tile_data = PackedInt32Array()
 script = ExtResource("3_bwmkm")
+
+[node name="Background" type="TextureRect" parent="."]
+z_index = -1000
+offset_left = -4565.0
+offset_top = -4220.0
+offset_right = 16243.0
+offset_bottom = 6144.0
+texture = ExtResource("5_t6llv")
+stretch_mode = 1
 
 [node name="Camera2D" type="Camera2D" parent="." node_paths=PackedStringArray("path")]
 position = Vector2(640, 360)
