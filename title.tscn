@@ -1,0 +1,111 @@
+[gd_scene load_steps=5 format=3 uid="uid://0pn74lymgudf"]
+
+[ext_resource type="Script" path="res://scripts/cutscene/title.gd" id="1_lj6ra"]
+[ext_resource type="Texture2D" uid="uid://cmx3xqrs3mw8o" path="res://images/title/logo.png" id="3_whcs5"]
+[ext_resource type="Texture2D" uid="uid://bysvcpuqjhgfx" path="res://images/intro/room.png" id="3_yf0t7"]
+[ext_resource type="AudioStream" uid="uid://erd2ujbmsoid" path="res://sfx/intro/typing.wav" id="7_iowm7"]
+
+[node name="Title" type="Node2D"]
+script = ExtResource("1_lj6ra")
+
+[node name="BG" type="Sprite2D" parent="."]
+texture = ExtResource("3_yf0t7")
+centered = false
+
+[node name="Typing" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("7_iowm7")
+autoplay = true
+
+[node name="Logo" type="Sprite2D" parent="."]
+position = Vector2(310, 150)
+texture = ExtResource("3_whcs5")
+
+[node name="Settings" type="Panel" parent="."]
+offset_left = 825.0
+offset_top = 492.0
+offset_right = 1264.0
+offset_bottom = 706.0
+mouse_filter = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="Settings"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="List" type="VBoxContainer" parent="Settings/MarginContainer"]
+layout_mode = 2
+mouse_filter = 2
+
+[node name="Title" type="Label" parent="Settings/MarginContainer/List"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "Settings"
+
+[node name="Screen Size2" type="Label" parent="Settings/MarginContainer/List"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "Window Mode"
+
+[node name="Screen Size3" type="Label" parent="Settings/MarginContainer/List"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 12
+text = "(You can also press F11 to toggle)"
+
+[node name="ScreenSizebuttons" type="HBoxContainer" parent="Settings/MarginContainer/List"]
+layout_mode = 2
+mouse_filter = 2
+alignment = 1
+
+[node name="1x" type="Button" parent="Settings/MarginContainer/List/ScreenSizebuttons"]
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_default_cursor_shape = 2
+theme_override_font_sizes/font_size = 24
+text = "Windowed"
+
+[node name="Fullscreen" type="Button" parent="Settings/MarginContainer/List/ScreenSizebuttons"]
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_default_cursor_shape = 2
+theme_override_font_sizes/font_size = 24
+text = "Fullscreen"
+
+[node name="Volume" type="Label" parent="Settings/MarginContainer/List"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "Volume"
+
+[node name="VolumeSlider" type="HSlider" parent="Settings/MarginContainer/List"]
+layout_mode = 2
+max_value = 1.0
+step = 0.05
+
+[node name="PlayButton" type="Button" parent="."]
+offset_left = 1146.0
+offset_top = 413.0
+offset_right = 1264.0
+offset_bottom = 488.0
+theme_override_font_sizes/font_size = 48
+text = "Play!"
+
+[node name="Label" type="Label" parent="."]
+offset_left = 664.0
+offset_top = 657.0
+offset_right = 820.0
+offset_bottom = 706.0
+text = "Game by Sciman101
+Ricket by Torcado"
+horizontal_alignment = 2
+
+[connection signal="pressed" from="Settings/MarginContainer/List/ScreenSizebuttons/1x" to="." method="_on_1x_pressed"]
+[connection signal="pressed" from="Settings/MarginContainer/List/ScreenSizebuttons/Fullscreen" to="." method="_on_fullscreen_pressed"]
+[connection signal="value_changed" from="Settings/MarginContainer/List/VolumeSlider" to="." method="_on_volume_slider_value_changed"]
+[connection signal="pressed" from="PlayButton" to="." method="_on_play_button_pressed"]

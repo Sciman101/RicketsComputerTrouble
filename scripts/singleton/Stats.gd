@@ -22,3 +22,7 @@ func calculate_completion():
 	var buddies_percent = buddies / buddies_total
 	var percent= laptops_percent * 0.8 + buddies_percent * 0.2
 	return round(percent* 100)
+
+func _input(e):
+	if Input.is_action_just_pressed("toggle_fullscreen"):
+		get_window().mode = Window.MODE_FULLSCREEN if get_window().mode == Window.MODE_WINDOWED else Window.MODE_WINDOWED
