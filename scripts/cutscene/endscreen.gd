@@ -9,17 +9,20 @@ var endscreen_done := false
 func _ready():
 	Player.disable()
 	Ui.hide()
+	Stats.timer_running = true
 	$Black.color = Color.BLACK
 	FileAccess.open("user://beatgame", FileAccess.WRITE)
 	
 	texts.append("The end!\n")
 	texts.append("Laptops: %s/%s" % [Stats.laptops, Stats.laptops_total])
-	texts.append("Buddies:")
+	texts.append("Buddies: %s/%s" % [Stats.buddies, Stats.buddies_total])
 	for buddy in Stats.visited_buddies.keys():
-		texts.append(" " + buddy)
-	texts.append("%s/%s" % [Stats.buddies, Stats.buddies_total])
+		texts.append("  -" + buddy)
 	texts.append("Deaths: %s" % Stats.deaths)
 	texts.append("Shots Fired: %s" % Stats.shots)
+	var minutes = floor(Stats.time/60)
+	var seconds = fmod(Stats.time,60)
+	texts.append("Time: %02d:%04.1f" % [minutes,seconds])
 	
 	var completion = Stats.calculate_completion()
 	completed_100 = completion >= 100

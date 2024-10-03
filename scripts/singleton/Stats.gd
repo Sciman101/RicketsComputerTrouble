@@ -9,12 +9,23 @@ var laptops_total := 84
 var buddies := 0
 var buddies_total := 5
 
+var time := 0.0
+var timer_running := false
+
 func reset():
 	visited_buddies = {}
 	shots = 0
 	laptops = 0
 	deaths = 0
 	buddies = 0
+	RoomManager.laptops = {}
+
+func _process(delta):
+	if timer_running:
+		time += delta
+		var minutes = floor(time/60)
+		var seconds = fmod(time,60)
+		Ui.timer_label.text = "%02d:%04.1f" % [minutes,seconds]
 
 func buddy_has_been_visited(buddy_name):
 	return visited_buddies.get(buddy_name, false)

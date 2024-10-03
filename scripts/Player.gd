@@ -105,6 +105,11 @@ func _handle_movement(delta : float):
 		jump_buffer.start()
 		on_jump.emit()
 	
+	if Input.is_key_pressed(KEY_0):
+		set_has_shotgun(true)
+		RoomManager.goto("res://rooms/finale.tscn")
+		position += Vector2.DOWN * 32
+	
 	if wants_to_jump() and able_to_jump():
 		velocity.y = -jump_velocity
 		jump_buffer.stop()

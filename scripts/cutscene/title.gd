@@ -8,6 +8,7 @@ func _ready():
 	$Settings/MarginContainer/List/VolumeSlider.value = db_to_linear(AudioServer.get_bus_volume_db(master_bus))
 	if not FileAccess.file_exists("user://beatgame"):
 		$Settings/MarginContainer/List/SuperDuperShotgunMode.hide()
+	Ui.hide()
 
 func _on_1x_pressed():
 	window.size = Vector2i(1280,720)
@@ -27,3 +28,6 @@ func _on_play_button_pressed():
 
 func _on_super_duper_shotgun_mode_toggled(toggled_on):
 	Player.set_has_super_duper_shotgun(toggled_on)
+
+func _on_timer_toggled(toggled_on):
+	Ui.timer_label.visible = toggled_on

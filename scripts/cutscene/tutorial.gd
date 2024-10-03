@@ -7,6 +7,7 @@ func _ready():
 	$PlayerStart.hide()
 	Player.set_has_shotgun(false)
 	Player.enable()
+	Ui.show()
 	
 	tutorial_sequence()
 
@@ -15,6 +16,7 @@ func tutorial_sequence():
 	
 	Ui.show_popup("Left and Right arrows or Left Stick to move", 0)
 	await Player.on_move
+	Stats.timer_running = true
 	
 	await Ui.hide_popup()
 	Ui.show_popup("Z key or A button to jump", 0)
