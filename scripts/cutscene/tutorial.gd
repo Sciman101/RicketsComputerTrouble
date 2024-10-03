@@ -6,6 +6,7 @@ func _ready():
 	Player.position = $PlayerStart.position
 	$PlayerStart.hide()
 	Player.set_has_shotgun(false)
+	Player.enable()
 	
 	tutorial_sequence()
 

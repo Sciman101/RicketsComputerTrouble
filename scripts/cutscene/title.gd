@@ -20,4 +20,4 @@ func _on_volume_slider_value_changed(value):
 
 
 func _on_play_button_pressed():
-	RoomManager.goto("res://intro.tscn","",false,false,false)
+	RoomManager.goto("res://intro.tscn","",false,false)
