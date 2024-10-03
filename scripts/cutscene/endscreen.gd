@@ -3,6 +3,8 @@ extends Node2D
 var texts = []
 var completed_100 = false
 
+var endscreen_done := false
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	Player.disable()
@@ -54,6 +56,7 @@ func do_info_sequence():
 		else:
 			SoundManager.play('shotgun-reload')
 		await Utils.wait_sec(1.25)
+	endscreen_done = true
 	await do_context_sequence()
 
 func do_context_sequence():
@@ -68,3 +71,8 @@ func do_context_sequence():
 	tween.tween_property(ctx[0],'position', ctx[0].position + Vector2(0,720), 1).set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_CIRC)
 	tween.tween_property(ctx[1],'position', ctx[1].position - Vector2(0,720), 1).set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_CIRC)
 	await tween.finished
+
+func _input(e):
+	if endscreen_done:
+		if Input.is_action_just_pressed("pause"):
+			RoomManager.goto("res://title.tscn","",true,false)
