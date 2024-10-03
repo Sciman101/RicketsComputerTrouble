@@ -22,7 +22,7 @@ texture = ExtResource("3_whcs5")
 
 [node name="Settings" type="Panel" parent="."]
 offset_left = 825.0
-offset_top = 492.0
+offset_top = 455.0
 offset_right = 1264.0
 offset_bottom = 706.0
 mouse_filter = 2
@@ -88,11 +88,15 @@ layout_mode = 2
 max_value = 1.0
 step = 0.05
 
+[node name="SuperDuperShotgunMode" type="CheckBox" parent="Settings/MarginContainer/List"]
+layout_mode = 2
+text = "Super Duper Shotgun Mode"
+
 [node name="PlayButton" type="Button" parent="."]
 offset_left = 1146.0
-offset_top = 413.0
+offset_top = 376.0
 offset_right = 1264.0
-offset_bottom = 488.0
+offset_bottom = 451.0
 theme_override_font_sizes/font_size = 48
 text = "Play!"
 
@@ -109,4 +113,5 @@ horizontal_alignment = 2
 [connection signal="pressed" from="Settings/MarginContainer/List/ScreenSizebuttons/1x" to="." method="_on_1x_pressed"]
 [connection signal="pressed" from="Settings/MarginContainer/List/ScreenSizebuttons/Fullscreen" to="." method="_on_fullscreen_pressed"]
 [connection signal="value_changed" from="Settings/MarginContainer/List/VolumeSlider" to="." method="_on_volume_slider_value_changed"]
+[connection signal="toggled" from="Settings/MarginContainer/List/SuperDuperShotgunMode" to="." method="_on_super_duper_shotgun_mode_toggled"]
 [connection signal="pressed" from="PlayButton" to="." method="_on_play_button_pressed"]

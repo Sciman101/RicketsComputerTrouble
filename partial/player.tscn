@@ -1,12 +1,13 @@
-[gd_scene load_steps=11 format=3 uid="uid://c3gitjraydm0r"]
+[gd_scene load_steps=12 format=3 uid="uid://c3gitjraydm0r"]
 
 [ext_resource type="Script" path="res://scripts/Player.gd" id="1_jv72v"]
 [ext_resource type="Texture2D" uid="uid://cmlclxwc6s1i4" path="res://images/tail.png" id="2_c0pe5"]
 [ext_resource type="Script" path="res://scripts/Tail.gd" id="2_tm25d"]
-[ext_resource type="Texture2D" uid="uid://dtbllcvmbwu1o" path="res://images/shotgun big.png" id="3_nxpwl"]
 [ext_resource type="SpriteFrames" uid="uid://bte60e431agt2" path="res://ricket_default.tres" id="4_dd3m6"]
 [ext_resource type="SpriteFrames" uid="uid://cwherq8dlfbx4" path="res://ricket_nogun.tres" id="4_kkydu"]
+[ext_resource type="Texture2D" uid="uid://bfgiqx55867fg" path="res://images/shotgun.png" id="6_noehw"]
 [ext_resource type="Texture2D" uid="uid://bixo73xoquuhw" path="res://images/superbounce.png" id="7_xcnh2"]
+[ext_resource type="Texture2D" uid="uid://bwl0pygqn6ikm" path="res://images/super duper shotgun.png" id="8_8qlhx"]
 
 [sub_resource type="Curve" id="Curve_i3w8k"]
 _data = [Vector2(0, 0.384615), 0.0, 0.0, 0, 0, Vector2(0.565041, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), -2.52889, 0.0, 0, 0]
@@ -51,15 +52,24 @@ sprite_frames = ExtResource("4_dd3m6")
 animation = &"air"
 autoplay = "default"
 
-[node name="ShotgunSprite" type="Sprite2D" parent="Appearance"]
-position = Vector2(0, 4)
-texture = ExtResource("3_nxpwl")
+[node name="ShotgunPivot" type="Node2D" parent="Appearance"]
+position = Vector2(0, 1.5)
+
+[node name="ShotgunSprite" type="Sprite2D" parent="Appearance/ShotgunPivot"]
+position = Vector2(0, 2.5)
+texture = ExtResource("6_noehw")
 offset = Vector2(8, 0)
 
-[node name="Superbounce" type="Sprite2D" parent="Appearance/ShotgunSprite"]
+[node name="Superbounce" type="Sprite2D" parent="Appearance/ShotgunPivot/ShotgunSprite"]
 visible = false
 position = Vector2(28, -5)
 texture = ExtResource("7_xcnh2")
+
+[node name="SuperDuperShotgunSprite" type="Sprite2D" parent="Appearance/ShotgunPivot"]
+visible = false
+position = Vector2(0, -13)
+texture = ExtResource("8_8qlhx")
+offset = Vector2(8, 0)
 
 [node name="BounceRaycast" type="RayCast2D" parent="."]
 position = Vector2(0, 38)

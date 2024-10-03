@@ -21,7 +21,10 @@ func tutorial_sequence():
 	await Player.on_jump
 	
 	await Ui.hide_popup()
-	Ui.show_popup("Get your laptop repair tool from under the bed", 0)
+	if Player.super_duper_shotgun:
+		Ui.show_popup("Get your super-duper shotgun from under the bed", 0)
+	else:
+		Ui.show_popup("Get your laptop repair tool from under the bed", 0)
 	
 	await $ShotgunPickup.body_entered
 	Player.set_has_shotgun(true)

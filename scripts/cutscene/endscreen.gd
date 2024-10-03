@@ -8,6 +8,7 @@ func _ready():
 	Player.disable()
 	Ui.hide()
 	$Black.color = Color.BLACK
+	FileAccess.open("user://beatgame", FileAccess.WRITE)
 	
 	texts.append("The end!\n")
 	texts.append("Laptops: %s/%s" % [Stats.laptops, Stats.laptops_total])

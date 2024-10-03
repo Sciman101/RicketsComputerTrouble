@@ -6,6 +6,8 @@ extends Node2D
 func _ready():
 	Player.disable()
 	$Settings/MarginContainer/List/VolumeSlider.value = db_to_linear(AudioServer.get_bus_volume_db(master_bus))
+	if not FileAccess.file_exists("user://beatgame"):
+		$Settings/MarginContainer/List/SuperDuperShotgunMode.hide()
 
 func _on_1x_pressed():
 	window.size = Vector2i(1280,720)
@@ -21,3 +23,7 @@ func _on_volume_slider_value_changed(value):
 
 func _on_play_button_pressed():
 	RoomManager.goto("res://intro.tscn","",false,false)
+
+
+func _on_super_duper_shotgun_mode_toggled(toggled_on):
+	Player.set_has_super_duper_shotgun(toggled_on)

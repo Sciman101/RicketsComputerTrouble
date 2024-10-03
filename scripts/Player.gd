@@ -34,7 +34,9 @@ const TAIL_OFFSETS := [12,14,16,14]
 # -- nodes --
 @onready var appearance = $Appearance
 @onready var sprite = $Appearance/RicketSprite
-@onready var shotgun_sprite = $Appearance/ShotgunSprite
+@onready var shotgun_pivot = $Appearance/ShotgunPivot
+@onready var shotgun_sprite = $Appearance/ShotgunPivot/ShotgunSprite
+@onready var super_dupershotgun_sprite = $Appearance/ShotgunPivot/SuperDuperShotgunSprite
 @onready var tail = $Tail
 
 @onready var jump_buffer = $JumpBuffer
@@ -43,7 +45,7 @@ const TAIL_OFFSETS := [12,14,16,14]
 @onready var reload_timer = $ReloadTimer
 @onready var bounce_raycast = $BounceRaycast
 
-@onready var SHOTGUN_REST_POS = shotgun_sprite.position
+@onready var SHOTGUN_REST_POS = shotgun_pivot.position
 
 var gravity : float
 var jump_velocity : float
@@ -62,6 +64,7 @@ var gun_rotational_velocity : float = 0
 var gun_velocity : Vector2
 
 var has_shotgun : bool = true
+var super_duper_shotgun : bool = false
 
 var shots_fired : int = 0
 
@@ -114,7 +117,7 @@ func _handle_movement(delta : float):
 		else:
 			velocity.y = max(-velocity.y, -jump_velocity)
 			if velocity.y < -100:
-				shotgun_sprite.position += Vector2.UP * 4
+				shotgun_pivot.position += Vector2.UP * 4
 				did_bounce = true
 				SoundManager.play('shotgun-bounce')
 			else:
@@ -136,7 +139,7 @@ func _handle_movement(delta : float):
 		if sign(direction) != facing:
 			facing = sign(direction)
 			if not aiming_down:
-				shotgun_sprite.rotation_degrees = 10
+				shotgun_pivot.rotation_degrees = 10
 		appearance.scale.x = facing
 		sprite.play("run")
 		on_move.emit()
@@ -185,11 +188,11 @@ func _handle_gun(delta):
 		target_gun_angle = 90
 	
 	# Interpolate gun
-	gun_rotational_velocity = Utils.spring(shotgun_sprite.rotation_degrees, target_gun_angle, gun_rotational_velocity, 10, 0.6)
-	shotgun_sprite.rotation_degrees += gun_rotational_velocity * delta
+	gun_rotational_velocity = Utils.spring(shotgun_pivot.rotation_degrees, target_gun_angle, gun_rotational_velocity, 10, 0.6)
+	shotgun_pivot.rotation_degrees += gun_rotational_velocity * delta
 	
-	gun_velocity = Utils.spring(shotgun_sprite.position, SHOTGUN_REST_POS, gun_velocity, 10, 0.6)
-	shotgun_sprite.position += gun_velocity * delta
+	gun_velocity = Utils.spring(shotgun_pivot.position, SHOTGUN_REST_POS, gun_velocity, 10, 0.6)
+	shotgun_pivot.position += gun_velocity * delta
 	
 	if Input.is_action_just_pressed("shoot") and can_shoot():
 		shoot()
@@ -210,54 +213,68 @@ func get_shell():
 func set_has_shotgun(value:bool):
 	self.has_shotgun = value
 	Ui.ammo_counter.set_visible(value)
-	shotgun_sprite.visible = value
+	shotgun_pivot.visible = value
 	sprite.sprite_frames = default_sprites if value else gunless_sprites
+
+func set_has_super_duper_shotgun(value:bool):
+	self.super_duper_shotgun = value
+	shotgun_sprite.visible = not value
+	super_dupershotgun_sprite.visible = value
 
 func reload_shotgun():
 	if not can_shoot():
 		ammo = MAX_DEFAULT_AMMO
 		SoundManager.play('shotgun-reload')
 		if aiming_down:
-			shotgun_sprite.position += Vector2(0, 2)
+			shotgun_pivot.position += Vector2(0, 2)
 		else:
-			shotgun_sprite.position += Vector2(-2, 0)
+			shotgun_pivot.position += Vector2(-2, 0)
 			
 		# Make shell
-		for i in shots_fired:
-			var shell_debris = Utils.spawn(ShellDebris, global_position, RoomManager.current_scene)
-			shell_debris.apply_force(Vector2(-facing * 300, randf_range(-300,-200)))
-			shell_debris.apply_torque(100)
+		var shell_offset = Vector2.UP if not aiming_down else Vector2(facing, 0)
+		var num_shots = 1 if not super_duper_shotgun else 4
+		for s in num_shots:
+			for i in shots_fired:
+				var shell_debris = Utils.spawn(ShellDebris, global_position + shell_offset * 10 * s, RoomManager.current_scene)
+				shell_debris.apply_force(Vector2(-facing * 300, randf_range(-300,-200)))
+				shell_debris.apply_torque(100)
 		shots_fired = 0
 	Ui.ammo_counter.set_amount(ammo)
 
 func shoot():
 	var bullet_direction = Vector2.RIGHT * facing
+	var offset_direction = Vector2.UP
 	if aiming_down:
 		bullet_direction = Vector2.DOWN
+		offset_direction = Vector2(facing, 0)
+	
+	var num_shots = 1 if not super_duper_shotgun else 4
+	var launch_speed_multiplier = 2 if super_duper_shotgun else 1
 	
 	# Create scenes
-	for i in range(-1,2):
-		var bullet = Utils.spawn(Bullet, global_position + bullet_direction * 32, RoomManager.current_scene)
-		var dir = bullet_direction.rotated(deg_to_rad(i * bullet_spread))
-		# bullet.rotation = -dir.angle_to(Vector2.RIGHT)
-		bullet.motion = dir * bullet_speed * randf_range(0.95,1.05)
+	for s in num_shots:
+		for i in range(-1,2):
+			var bullet = Utils.spawn(Bullet, global_position + bullet_direction * 32 + offset_direction * s * 8, RoomManager.current_scene)
+			var dir = bullet_direction.rotated(deg_to_rad(i * bullet_spread))
+			# bullet.rotation = -dir.angle_to(Vector2.RIGHT)
+			bullet.motion = dir * bullet_speed * randf_range(0.95,1.05)
 	
 	SoundManager.play('shotgun-fire')
 	Stats.shots += 1
 	# Apply velocity
 	if not is_on_floor():
 		if aiming_down:
-			velocity.y = min(-gun_vertical_launch_speed, velocity.y - gun_vertical_launch_speed)
+			velocity.y = min(-gun_vertical_launch_speed * launch_speed_multiplier, velocity.y - gun_vertical_launch_speed * launch_speed_multiplier)
 			# Determine if we performed a superbounce
 			if velocity.y < -gun_vertical_launch_speed - 200:
 				SoundManager.play('ding', 1.5, 0.5)
 		else:
 			ignore_horizontal_input_buffer = 0.1
-			velocity.x = gun_horizontal_launch_speed * -facing
-			velocity.y -= gun_horizontal_launch_vertical_boost_speed
+			velocity.x = gun_horizontal_launch_speed * -facing * launch_speed_multiplier
+			velocity.y -= gun_horizontal_launch_vertical_boost_speed * launch_speed_multiplier
 	
 	bullet_direction.x = abs(bullet_direction.x)
-	shotgun_sprite.position -= bullet_direction * 8
+	shotgun_pivot.position -= bullet_direction * 8
 	
 	ammo -= 1
 	shots_fired += 1
