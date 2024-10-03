@@ -12,3 +12,6 @@ func _input(event):
 			var pause = not get_tree().paused
 			get_tree().paused = pause
 			pause_screen.visible = pause
+	
+	if Input.is_action_just_pressed("toggle_fullscreen"):
+		get_window().mode = Window.MODE_FULLSCREEN if get_window().mode == Window.MODE_WINDOWED else Window.MODE_WINDOWED

@@ -75,4 +75,5 @@ func do_context_sequence():
 func _input(e):
 	if endscreen_done:
 		if Input.is_action_just_pressed("pause"):
+			Stats.reset()
 			RoomManager.goto("res://title.tscn","",true,false)
