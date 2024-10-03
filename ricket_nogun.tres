@@ -1,0 +1,70 @@
+[gd_resource type="SpriteFrames" load_steps=9 format=3 uid="uid://cwherq8dlfbx4"]
+
+[ext_resource type="Texture2D" uid="uid://lyohpecypmql" path="res://images/Ricket Nogun.png" id="1_g6d03"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2je1i"]
+atlas = ExtResource("1_g6d03")
+region = Rect2(384, 0, 64, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0ggse"]
+atlas = ExtResource("1_g6d03")
+region = Rect2(0, 0, 64, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qsclo"]
+atlas = ExtResource("1_g6d03")
+region = Rect2(64, 0, 64, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2r2yp"]
+atlas = ExtResource("1_g6d03")
+region = Rect2(128, 0, 64, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5xwkq"]
+atlas = ExtResource("1_g6d03")
+region = Rect2(192, 0, 64, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8bxqm"]
+atlas = ExtResource("1_g6d03")
+region = Rect2(256, 0, 64, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_b1trg"]
+atlas = ExtResource("1_g6d03")
+region = Rect2(320, 0, 64, 80)
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2je1i")
+}],
+"loop": true,
+"name": &"air",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0ggse")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qsclo")
+}],
+"loop": true,
+"name": &"default",
+"speed": 2.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2r2yp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5xwkq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8bxqm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_b1trg")
+}],
+"loop": true,
+"name": &"run",
+"speed": 10.0
+}]

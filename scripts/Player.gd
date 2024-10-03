@@ -27,6 +27,10 @@ const TAIL_OFFSETS := [12,14,16,14]
 @export var bullet_speed : float = 250
 @export var bullet_spread : float = 7.5
 
+@export_category("Sprites")
+@export var default_sprites : SpriteFrames
+@export var gunless_sprites : SpriteFrames
+
 # -- nodes --
 @onready var appearance = $Appearance
 @onready var sprite = $Appearance/RicketSprite
@@ -207,6 +211,7 @@ func set_has_shotgun(value:bool):
 	self.has_shotgun = value
 	Ui.ammo_counter.set_visible(value)
 	shotgun_sprite.visible = value
+	sprite.sprite_frames = default_sprites if value else gunless_sprites
 
 func reload_shotgun():
 	if not can_shoot():
