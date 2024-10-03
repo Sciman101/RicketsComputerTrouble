@@ -46,6 +46,8 @@ var jump_velocity : float
 var facing : int = 1
 var ignore_horizontal_input_buffer : float = 0
 
+var enabled := true
+
 var was_on_floor : bool = false
 var superbounce_timer : float = 0
 
@@ -294,11 +296,13 @@ func enable():
 	show()
 	set_process(true)
 	set_physics_process(true)
+	enabled = true
 
 func disable():
 	hide()
 	set_process(false)
 	set_physics_process(false)
+	enabled = false
 
 func respawn():
 	if checkpoint:

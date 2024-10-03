@@ -34,7 +34,7 @@ func load_scene(path:String):
 	scene_changed.emit()
 
 # Load a scene and optionally provide a door to warp to
-func goto(scene_to_load:String, linked_door_name:String="", hide_player:bool = false, animate_fade:bool=true):
+func goto(scene_to_load:String, linked_door_name:String="", hide_player:bool = false, animate_fade:bool=true, enable_player:bool=true):
 	target_scene_path = scene_to_load
 	self.linked_door_name = linked_door_name
 	if animate_fade:
@@ -51,17 +51,16 @@ func goto(scene_to_load:String, linked_door_name:String="", hide_player:bool = f
 	else:
 		_do_scene_transition()
 	Ui.hide_popup()
-	if hide_player:
-		Player.hide()
-	else:
-		Player.show()
-		Player.set_physics_process(true)
+	if hide_player or not enable_player:
+		Player.disable()
+	elif enable_player:
+		Player.enable()
 
 # Called in between the transition tween to actually change the scene
 func _do_scene_transition():
 	load_scene(target_scene_path)
-	var door = find_door_by_name(self.linked_door_name)
-	if door:
+	if self.linked_door_name.length() > 0:
+		var door = find_door_by_name(self.linked_door_name)
 		Player.warp_to_door(door)
 
 # Find a door by its name

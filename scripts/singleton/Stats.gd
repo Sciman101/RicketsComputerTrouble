@@ -18,8 +18,8 @@ func visit_buddy(buddy_name):
 		visited_buddies[buddy_name] = true
 
 func calculate_completion():
-	var laptops_percent = laptops / max(laptops_total,1)
-	var buddies_percent = buddies / buddies_total
+	var laptops_percent = float(laptops) / max(laptops_total,1)
+	var buddies_percent = float(buddies) / buddies_total
 	var percent= laptops_percent * 0.8 + buddies_percent * 0.2
 	return round(percent* 100)
 

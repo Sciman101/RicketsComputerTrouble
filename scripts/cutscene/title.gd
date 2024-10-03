@@ -4,6 +4,7 @@ extends Node2D
 @onready var window := get_window()
 
 func _ready():
+	Player.disable()
 	$Settings/MarginContainer/List/VolumeSlider.value = db_to_linear(AudioServer.get_bus_volume_db(master_bus))
 
 func _on_1x_pressed():
@@ -19,4 +20,4 @@ func _on_volume_slider_value_changed(value):
 
 
 func _on_play_button_pressed():
-	RoomManager.goto("res://intro.tscn","",false,false)
+	RoomManager.goto("res://intro.tscn","",false,false,false)

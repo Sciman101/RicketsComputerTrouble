@@ -97,12 +97,13 @@ theme_override_font_sizes/font_size = 48
 text = "Play!"
 
 [node name="Label" type="Label" parent="."]
-offset_left = 664.0
-offset_top = 657.0
-offset_right = 820.0
-offset_bottom = 706.0
+offset_left = 551.0
+offset_top = 630.0
+offset_right = 821.0
+offset_bottom = 705.0
 text = "Game by Sciman101
-Ricket by Torcado"
+Ricket by Torcado
+Best experienced with a controller!"
 horizontal_alignment = 2
 
 [connection signal="pressed" from="Settings/MarginContainer/List/ScreenSizebuttons/1x" to="." method="_on_1x_pressed"]

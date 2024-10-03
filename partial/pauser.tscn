@@ -1,0 +1,27 @@
+[gd_scene load_steps=2 format=3 uid="uid://dqsvwkdxucgtn"]
+
+[ext_resource type="Script" path="res://scripts/singleton/pauser.gd" id="1_j5auc"]
+
+[node name="Pauser" type="CanvasLayer"]
+process_mode = 3
+script = ExtResource("1_j5auc")
+
+[node name="PauseScreen" type="ColorRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.392157)
+
+[node name="Label" type="Label" parent="PauseScreen"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 64
+text = "Paused"
+horizontal_alignment = 1
+vertical_alignment = 1

@@ -22,6 +22,8 @@ func _ready():
 	
 	used_rect = get_used_rect()
 	
+	RoomManager.scene_changed.connect(self.check_reveal_overlay)
+	
 	for node in get_tree().get_nodes_in_group("Stopwatch"):
 		node.toggle_blocks.connect(self.toggle_stopwatch_blocks)
 
@@ -31,6 +33,12 @@ func _use_tile_data_runtime_update(layer: int, coords: Vector2i) -> bool:
 func _tile_data_runtime_update(layer: int, coords: Vector2i, tile_data: TileData) -> void:
 	# For the overlay layer, turn off any collisions
 	tile_data.set_collision_polygons_count(0, 0)
+
+func check_reveal_overlay():
+	if RoomManager.linked_door_name == "Exit":
+		await get_tree().process_frame
+		# We do this so players going back through a room don't need t
+		reveal_overlay_layer(null)
 
 func reveal_overlay_layer(body):
 	if overlay_layer_hidden:
