@@ -99,6 +99,10 @@ collision_mask = 2
 [node name="CollisionShape2D" type="CollisionShape2D" parent="OverlayReveal" index="0"]
 shape = SubResource("RectangleShape2D_3jt0w")
 
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="OverlayReveal" index="1"]
+position = Vector2(-463, 65)
+shape = SubResource("RectangleShape2D_3jt0w")
+
 [node name="Satellite" parent="." index="12" instance=ExtResource("5_roqn1")]
 position = Vector2(361, 576)
 spriteframes = SubResource("SpriteFrames_jbit5")
