@@ -291,6 +291,7 @@ func shoot():
 
 func die():
 	disable()
+	SoundManager.play('death')
 	shots_fired = 0
 	
 	# Create corpse
