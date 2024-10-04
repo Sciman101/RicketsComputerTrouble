@@ -18,14 +18,20 @@ func reset():
 	laptops = 0
 	deaths = 0
 	buddies = 0
+	time = 0.0
+	timer_running = false
 	RoomManager.laptops = {}
+	update_ui_timer()
 
 func _process(delta):
 	if timer_running:
 		time += delta
-		var minutes = floor(time/60)
-		var seconds = fmod(time,60)
-		Ui.timer_label.text = "%02d:%04.1f" % [minutes,seconds]
+		update_ui_timer()
+
+func update_ui_timer():
+	var minutes = floor(time/60)
+	var seconds = fmod(time,60)
+	Ui.timer_label.text = "%02d:%04.1f" % [minutes,seconds]
 
 func buddy_has_been_visited(buddy_name):
 	return visited_buddies.get(buddy_name, false)

@@ -114,6 +114,7 @@ Ricket by Torcado
 Best experienced with a controller!"
 horizontal_alignment = 2
 
+[connection signal="finished" from="Typing" to="Typing" method="play"]
 [connection signal="pressed" from="Settings/MarginContainer/List/ScreenSizebuttons/1x" to="." method="_on_1x_pressed"]
 [connection signal="pressed" from="Settings/MarginContainer/List/ScreenSizebuttons/Fullscreen" to="." method="_on_fullscreen_pressed"]
 [connection signal="value_changed" from="Settings/MarginContainer/List/VolumeSlider" to="." method="_on_volume_slider_value_changed"]
