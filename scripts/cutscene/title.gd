@@ -30,4 +30,4 @@ func _on_super_duper_shotgun_mode_toggled(toggled_on):
 	Player.set_has_super_duper_shotgun(toggled_on)
 
 func _on_timer_toggled(toggled_on):
-	Ui.timer_label.visible = toggled_on
+	Ui.timer_panel.visible = toggled_on

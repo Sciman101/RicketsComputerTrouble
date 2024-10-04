@@ -140,7 +140,9 @@ func _handle_movement(delta : float):
 	# Get the input direction and handle the movement/deceleration.
 	var direction = Input.get_axis("left", "right")
 	if direction and ignore_horizontal_input_buffer <= 0:
-		velocity.x = move_toward(velocity.x, move_speed * direction, delta * acceleration)
+		# Only accelerate if we won't slow down
+		if (direction != sign(velocity.x) and direction != 0) or move_speed > abs(velocity.x) or is_on_floor():
+			velocity.x = move_toward(velocity.x, move_speed * direction, delta * acceleration)
 		if sign(direction) != facing:
 			facing = sign(direction)
 			if not aiming_down:
@@ -274,7 +276,7 @@ func shoot():
 			if velocity.y < -gun_vertical_launch_speed - 200:
 				SoundManager.play('ding', 1.5, 0.5)
 		else:
-			ignore_horizontal_input_buffer = 0.1
+			ignore_horizontal_input_buffer = 0.2
 			velocity.x = gun_horizontal_launch_speed * -facing * launch_speed_multiplier
 			velocity.y -= gun_horizontal_launch_vertical_boost_speed * launch_speed_multiplier
 	

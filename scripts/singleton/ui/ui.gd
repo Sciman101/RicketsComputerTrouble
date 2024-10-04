@@ -4,11 +4,12 @@ extends CanvasLayer
 @onready var popup = $PopupText
 @onready var popup_label = $PopupText/MarginContainer/Text
 @onready var timer_label = $TimerPanel/Timer
+@onready var timer_panel = $TimerPanel
 
 func _ready():
 	popup.position.y = -popup.size.y
 	ammo_counter.hide()
-	timer_label.hide()
+	timer_panel.hide()
 
 func show_popup(text:String, duration:float=5.0):
 	popup_label.text = text
