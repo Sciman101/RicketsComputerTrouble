@@ -14,12 +14,12 @@ func _ready():
 func tutorial_sequence():
 	await Utils.wait_sec(1)
 	
-	Ui.show_popup("Left and Right arrows or Left Stick to move", 0)
+	Ui.show_popup("%s/%s, or Left Stick to move" % [Utils.get_keyboard_event_text(&"left"),Utils.get_keyboard_event_text(&"right")], 0)
 	await Player.on_move
 	Stats.timer_running = true
 	
 	await Ui.hide_popup()
-	Ui.show_popup("Z key or A button to jump", 0)
+	Ui.show_popup("%s key or A button to jump" % Utils.get_keyboard_event_text(&"jump"), 0)
 	await Player.on_jump
 	
 	await Ui.hide_popup()
@@ -33,7 +33,7 @@ func tutorial_sequence():
 	SoundManager.play('shotgun-reload')
 	
 	await Ui.hide_popup()
-	Ui.show_popup("Fix the laptop (Z key/X button/Right Trigger to shoot)", 0)
+	Ui.show_popup("Fix the laptop (%s key/X button/Right Trigger to shoot)" % Utils.get_keyboard_event_text(&"shoot"), 0)
 	
 	await $Laptop.on_destroyed
 	

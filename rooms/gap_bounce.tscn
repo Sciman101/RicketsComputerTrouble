@@ -87,17 +87,21 @@ position = Vector2(1456, 341)
 
 [node name="Help" parent="." index="9" instance=ExtResource("4_cglds")]
 position = Vector2(201, 340)
-help_text = "You can't walk on rings, but you can bounce on them (Hold Down/Left Trigger/[C])"
+help_text = "You can't walk on rings, but you can bounce on them (Hold [down]/Left Trigger)"
 
-[node name="Iekika" parent="." index="10" instance=ExtResource("5_chaa6")]
+[node name="Help2" parent="." index="10" instance=ExtResource("4_cglds")]
+position = Vector2(944, 340)
+help_text = "Press [restart]/Right Bumper to restart a room"
+
+[node name="Iekika" parent="." index="11" instance=ExtResource("5_chaa6")]
 position = Vector2(140, 576)
 spriteframes = SubResource("SpriteFrames_tljmw")
 offset = Vector2(0, -47)
 
-[node name="Checkpoint" parent="." index="11" instance=ExtResource("7_k1a3a")]
+[node name="Checkpoint" parent="." index="12" instance=ExtResource("7_k1a3a")]
 position = Vector2(1526, 384)
 
-[node name="Path2D" parent="." index="12"]
+[node name="Path2D" parent="." index="13"]
 curve = SubResource("Curve2D_cb6ij")
 
 [connection signal="body_entered" from="Revealer" to="TileMap" method="reveal_overlay_layer"]

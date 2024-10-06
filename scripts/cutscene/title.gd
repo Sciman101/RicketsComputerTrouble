@@ -3,6 +3,8 @@ extends Node2D
 @onready var master_bus := AudioServer.get_bus_index("Master")
 @onready var window := get_window()
 
+@onready var input_rebinding = $InputRebinding
+
 func _ready():
 	Player.disable()
 	$Settings/MarginContainer/List/VolumeSlider.value = db_to_linear(AudioServer.get_bus_volume_db(master_bus))

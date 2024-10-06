@@ -97,6 +97,4 @@ help_text = "Bldg Maintenance: STOP LEAVING LAPTOPS IN THE VENTILATION SYSTEM!!"
 [node name="Path2D" parent="." index="22"]
 curve = SubResource("Curve2D_qx3p3")
 
-[connection signal="body_entered" from="TileMap/ShellPickup" to="TileMap/ShellPickup" method="_on_body_entered"]
-[connection signal="body_entered" from="TileMap/@Area2D@31096" to="TileMap/@Area2D@31096" method="_on_body_entered"]
 [connection signal="body_entered" from="RevealHiddenRegion" to="TileMap" method="reveal_overlay_layer"]

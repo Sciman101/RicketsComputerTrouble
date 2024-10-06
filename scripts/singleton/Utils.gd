@@ -19,3 +19,6 @@ func spawn(scene:PackedScene, at:Vector2, parent=null):
 
 func wait_sec(seconds:float):
 	return get_tree().create_timer(seconds).timeout
+
+func get_keyboard_event_text(action:StringName):
+	return "[" + InputMap.action_get_events(action).back().as_text().replace("(Physical)","").trim_suffix(" ") + "]"
