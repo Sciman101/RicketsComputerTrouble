@@ -139,7 +139,7 @@ alignment = 1
 [node name="Label" type="Label" parent="MarginContainer/Panel/VBoxContainer/InputButtonRestart"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 32
-text = "Restart Room"
+text = "Respawn"
 
 [node name="Button" type="Button" parent="MarginContainer/Panel/VBoxContainer/InputButtonRestart"]
 layout_mode = 2

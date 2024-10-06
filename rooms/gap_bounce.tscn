@@ -91,7 +91,7 @@ help_text = "You can't walk on rings, but you can bounce on them (Hold [down]/Le
 
 [node name="Help2" parent="." index="10" instance=ExtResource("4_cglds")]
 position = Vector2(944, 340)
-help_text = "Press [restart]/Right Bumper to restart a room"
+help_text = "Press [restart]/Right Bumper to respawn"
 
 [node name="Iekika" parent="." index="11" instance=ExtResource("5_chaa6")]
 position = Vector2(140, 576)
